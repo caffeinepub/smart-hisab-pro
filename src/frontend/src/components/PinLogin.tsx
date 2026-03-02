@@ -208,18 +208,21 @@ export default function PinLogin({ mode, onUnlock }: PinLoginProps) {
 
   return (
     <div
-      className={`fixed inset-0 z-[100] flex flex-col items-center justify-center pin-screen-bg${isDark ? " dark" : ""}`}
+      className={`fixed inset-0 z-[100] flex flex-col items-center justify-center${isDark ? " dark" : ""}`}
+      style={{
+        backgroundImage:
+          "url('/assets/uploads/Gemini_Generated_Image_4k8lxm4k8lxm4k8l-1.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
       aria-label="PIN lock screen"
     >
-      {/* Background decorative blobs */}
+      {/* Subtle overlay for card readability */}
       <div
-        className="absolute inset-0 overflow-hidden pointer-events-none"
+        className="absolute inset-0 bg-black/15 pointer-events-none"
         aria-hidden="true"
-      >
-        <div className="pin-blob-1" />
-        <div className="pin-blob-2" />
-        <div className="pin-blob-3" />
-      </div>
+      />
 
       <motion.div
         initial={{ opacity: 0, y: 24, scale: 0.96 }}
@@ -228,7 +231,7 @@ export default function PinLogin({ mode, onUnlock }: PinLoginProps) {
         className="relative z-10 w-full max-w-sm mx-4"
       >
         {/* Card */}
-        <div className="pin-card rounded-2xl shadow-2xl p-8 flex flex-col items-center gap-6">
+        <div className="pin-card rounded-2xl shadow-2xl p-8 flex flex-col items-center gap-6 backdrop-blur-md bg-white/85 dark:bg-gray-900/80">
           {/* Brand */}
           <div className="flex flex-col items-center gap-2">
             <div className="pin-icon-ring w-16 h-16 rounded-full flex items-center justify-center">
@@ -236,9 +239,9 @@ export default function PinLogin({ mode, onUnlock }: PinLoginProps) {
             </div>
             <div className="text-center">
               <h1 className="font-bold text-xl tracking-tight pin-text-primary">
-                Smart Hisab Pro
+                Atrai Online Bhumisheba And MA Computer
               </h1>
-              <p className="text-xs pin-text-muted">Financial Tracker</p>
+              <p className="text-xs pin-text-muted">ভূমি সেবা ও কম্পিউটার</p>
             </div>
           </div>
 

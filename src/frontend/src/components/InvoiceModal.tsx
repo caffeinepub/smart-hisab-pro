@@ -202,7 +202,7 @@ export default function InvoiceModal({
                       letterSpacing: "-0.5px",
                     }}
                   >
-                    Smart Hisab Pro
+                    Atrai Online Bhumisheba And MA Computer
                   </h1>
                   <p
                     style={{
@@ -582,7 +582,7 @@ export default function InvoiceModal({
                   ধন্যবাদ! / Thank you for your business
                 </p>
                 <p style={{ margin: 0, fontSize: "11px", color: "#9ca3af" }}>
-                  Smart Hisab Pro · ভূমি সেবা Financial Tracker
+                  Atrai Online Bhumisheba And MA Computer · ভূমি সেবা ও কম্পিউটার
                 </p>
               </div>
               <div style={{ textAlign: "right" }}>

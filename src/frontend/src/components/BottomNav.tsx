@@ -1,6 +1,19 @@
-import { ArrowLeftRight, FileText, HelpCircle, Users } from "lucide-react";
+import {
+  ArrowLeftRight,
+  FileText,
+  HelpCircle,
+  LayoutDashboard,
+  Settings,
+  Users,
+} from "lucide-react";
 
-type TabId = "customers" | "transactions" | "reports" | "help";
+type TabId =
+  | "dashboard"
+  | "customers"
+  | "transactions"
+  | "reports"
+  | "settings"
+  | "help";
 
 interface BottomNavProps {
   activeTab: TabId;
@@ -14,6 +27,12 @@ const tabs: {
   labelEn: string;
   icon: React.ReactNode;
 }[] = [
+  {
+    id: "dashboard",
+    labelBn: "ড্যাশবোর্ড",
+    labelEn: "Dashboard",
+    icon: <LayoutDashboard className="h-5 w-5" />,
+  },
   {
     id: "customers",
     labelBn: "কাস্টমার",
@@ -33,10 +52,10 @@ const tabs: {
     icon: <FileText className="h-5 w-5" />,
   },
   {
-    id: "help",
-    labelBn: "সাহায্য",
-    labelEn: "Help",
-    icon: <HelpCircle className="h-5 w-5" />,
+    id: "settings",
+    labelBn: "সেটিংস",
+    labelEn: "Settings",
+    icon: <Settings className="h-5 w-5" />,
   },
 ];
 

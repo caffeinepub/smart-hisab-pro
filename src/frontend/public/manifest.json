@@ -1,7 +1,7 @@
 {
-  "name": "Smart Hisab Pro",
-  "short_name": "Hisab Pro",
-  "description": "Financial tracker for customers, income, expenses, dues and payments.",
+  "name": "Atrai Online Bhumisheba And MA Computer",
+  "short_name": "Atrai Bhumisheba",
+  "description": "ভূমি সেবা ও কম্পিউটার সেবার হিসাব পরিচালনার অ্যাপ। গ্রাহক, আয়, ব্যয়, বাকি ও পরিশোধ সহ চার্ট ও রপ্তানি সুবিধা।",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

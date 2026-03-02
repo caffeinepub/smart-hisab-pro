@@ -54,11 +54,13 @@ import { toast } from "sonner";
 import AddCustomerModal from "./components/AddCustomerModal";
 import BottomNav from "./components/BottomNav";
 import ChangePinModal from "./components/ChangePinModal";
+import DashboardPage from "./components/DashboardPage";
 import EditCustomerModal from "./components/EditCustomerModal";
 import EditTransactionModal from "./components/EditTransactionModal";
 import HelpPage from "./components/HelpPage";
 import InvoiceModal from "./components/InvoiceModal";
 import PinLogin from "./components/PinLogin";
+import SettingsPage from "./components/SettingsPage";
 import SidebarNav from "./components/SidebarNav";
 
 // ─── Data Model ───────────────────────────────────────────────────────────────
@@ -70,7 +72,13 @@ interface Customer {
 }
 
 type TransactionType = "Income" | "Expense" | "Due" | "Paid";
-type TabId = "customers" | "transactions" | "reports" | "help";
+type TabId =
+  | "dashboard"
+  | "customers"
+  | "transactions"
+  | "reports"
+  | "settings"
+  | "help";
 
 interface Transaction {
   date: string;
@@ -154,7 +162,7 @@ export default function App() {
   }, [darkMode]);
 
   // Tab State
-  const [activeTab, setActiveTab] = useState<TabId>("customers");
+  const [activeTab, setActiveTab] = useState<TabId>("dashboard");
 
   // Data
   const [customers, setCustomers] = useState<Customer[]>(() =>
@@ -266,20 +274,30 @@ export default function App() {
 
       if (ctrl && e.key === "1") {
         e.preventDefault();
-        setActiveTab("customers");
+        setActiveTab("dashboard");
         return;
       }
       if (ctrl && e.key === "2") {
         e.preventDefault();
-        setActiveTab("transactions");
+        setActiveTab("customers");
         return;
       }
       if (ctrl && e.key === "3") {
         e.preventDefault();
-        setActiveTab("reports");
+        setActiveTab("transactions");
         return;
       }
       if (ctrl && e.key === "4") {
+        e.preventDefault();
+        setActiveTab("reports");
+        return;
+      }
+      if (ctrl && e.key === "5") {
+        e.preventDefault();
+        setActiveTab("settings");
+        return;
+      }
+      if (ctrl && e.key === "6") {
         e.preventDefault();
         setActiveTab("help");
         return;
@@ -417,7 +435,7 @@ export default function App() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "smart_hisab_customers.csv";
+    a.download = "atrai_bhumisheba_customers.csv";
     a.click();
     URL.revokeObjectURL(url);
     toast.success("কাস্টমার CSV রপ্তানি সফল / Customers CSV exported!");
@@ -433,7 +451,7 @@ export default function App() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `smart_hisab_backup_${new Date().toISOString().slice(0, 10)}.json`;
+    a.download = `atrai_bhumisheba_backup_${new Date().toISOString().slice(0, 10)}.json`;
     a.click();
     URL.revokeObjectURL(url);
     toast.success("JSON ব্যাকআপ রপ্তানি সফল / JSON backup exported!");
@@ -646,7 +664,7 @@ export default function App() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "smart_hisab_transactions.csv";
+    a.download = "atrai_bhumisheba_transactions.csv";
     a.click();
     URL.revokeObjectURL(url);
     toast.success("CSV রপ্তানি সফল / CSV exported successfully!");
@@ -664,10 +682,10 @@ export default function App() {
       })
       .join("");
 
-    const html = `<!DOCTYPE html><html><head><title>Smart Hisab Pro Report</title>
+    const html = `<!DOCTYPE html><html><head><title>Atrai Online Bhumisheba And MA Computer Report</title>
     <style>body{font-family:sans-serif;font-size:12px}table{width:100%;border-collapse:collapse}th,td{border:1px solid #ccc;padding:6px 8px}th{background:#f0f0f0;font-weight:600}h2{margin-bottom:4px}p{margin:0 0 12px;color:#666;font-size:11px}</style>
     </head><body>
-    <h2>Smart Hisab Pro – Transaction Report</h2>
+    <h2>Atrai Online Bhumisheba And MA Computer – Transaction Report</h2>
     <p>Generated: ${new Date().toLocaleDateString()}</p>
     <table><thead><tr><th>Date</th><th>Type</th><th>Customer</th><th>Phone</th><th>Address</th><th>Amount</th></tr></thead><tbody>${rows}</tbody></table>
     </body></html>`;
@@ -740,7 +758,17 @@ export default function App() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <div className="min-h-screen bg-background font-sans flex flex-col">
+    <div
+      className="min-h-screen font-sans flex flex-col"
+      style={{
+        backgroundImage:
+          "url('/assets/uploads/Gemini_Generated_Image_4k8lxm4k8lxm4k8l-1.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       <Toaster richColors position="bottom-right" />
 
       <ChangePinModal
@@ -793,13 +821,15 @@ export default function App() {
                 </thead>
                 <tbody className="divide-y divide-border/40">
                   {[
-                    { key: "Ctrl + 1", action: "কাস্টমার ট্যাব / Customers tab" },
+                    { key: "Ctrl + 1", action: "ড্যাশবোর্ড / Dashboard tab" },
+                    { key: "Ctrl + 2", action: "কাস্টমার ট্যাব / Customers tab" },
                     {
-                      key: "Ctrl + 2",
+                      key: "Ctrl + 3",
                       action: "লেনদেন ট্যাব / Transactions tab",
                     },
-                    { key: "Ctrl + 3", action: "রিপোর্ট ট্যাব / Reports tab" },
-                    { key: "Ctrl + 4", action: "সাহায্য ট্যাব / Help tab" },
+                    { key: "Ctrl + 4", action: "রিপোর্ট ট্যাব / Reports tab" },
+                    { key: "Ctrl + 5", action: "সেটিংস ট্যাব / Settings tab" },
+                    { key: "Ctrl + 6", action: "সাহায্য ট্যাব / Help tab" },
                     { key: "Ctrl + N", action: "নতুন কাস্টমার / New customer" },
                     { key: "Ctrl + K", action: "সার্চ ফোকাস / Focus search" },
                     { key: "Escape", action: "মডাল বন্ধ / Close modals" },
@@ -894,9 +924,9 @@ export default function App() {
             />
             <div>
               <h1 className="text-white font-bold text-base leading-none tracking-tight">
-                Smart Hisab Pro
+                Atrai Online Bhumisheba And MA Computer
               </h1>
-              <p className="text-white/60 text-xs">Financial Tracker</p>
+              <p className="text-white/60 text-xs">ভূমি সেবা ও কম্পিউটার</p>
             </div>
           </div>
           <div className="flex items-center gap-1">
@@ -951,7 +981,7 @@ export default function App() {
         />
 
         {/* Main Content */}
-        <main className="flex-1 overflow-y-auto min-h-0 p-4 md:p-6 xl:p-8 pb-24 md:pb-8 space-y-6 w-full">
+        <main className="flex-1 overflow-y-auto min-h-0 p-4 md:p-6 xl:p-8 pb-24 md:pb-8 space-y-6 w-full main-glass">
           {/* ── Mobile PWA Install Banner ── */}
           {showInstallBanner && (
             <div className="md:hidden flex items-center gap-3 p-3 rounded-xl bg-primary/10 border border-primary/30 text-sm">
@@ -981,6 +1011,21 @@ export default function App() {
                 <X className="h-3.5 w-3.5" />
               </Button>
             </div>
+          )}
+
+          {/* ═══════════════════════════════════════════════════════════
+              TAB 0 — DASHBOARD
+          ═══════════════════════════════════════════════════════════ */}
+          {activeTab === "dashboard" && (
+            <DashboardPage
+              customers={customers}
+              transactions={transactions}
+              darkMode={darkMode}
+              onDrillDown={(name) => {
+                setSearch(name);
+                setActiveTab("transactions");
+              }}
+            />
           )}
 
           {/* ═══════════════════════════════════════════════════════════
@@ -1166,35 +1211,35 @@ export default function App() {
 
                               {/* MIDDLE: Stats grid */}
                               <div className="flex-1 grid grid-cols-4 gap-1.5">
-                                <div className="text-center py-2 px-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/30">
-                                  <p className="text-[9px] text-emerald-700 dark:text-emerald-400 font-medium uppercase tracking-wide leading-none mb-1">
+                                <div className="text-center py-2 px-1.5 rounded-lg bg-emerald-600/60 border border-emerald-400/30">
+                                  <p className="text-[9px] text-white/80 font-medium uppercase tracking-wide leading-none mb-1">
                                     আয়
                                   </p>
-                                  <p className="text-xs font-bold text-emerald-700 dark:text-emerald-400 tabular-nums">
+                                  <p className="text-xs font-bold text-white tabular-nums">
                                     {fmtAmt(report?.income ?? 0)}
                                   </p>
                                 </div>
-                                <div className="text-center py-2 px-1.5 rounded-lg bg-red-50 dark:bg-red-950/30">
-                                  <p className="text-[9px] text-red-700 dark:text-red-400 font-medium uppercase tracking-wide leading-none mb-1">
+                                <div className="text-center py-2 px-1.5 rounded-lg bg-red-600/60 border border-red-400/30">
+                                  <p className="text-[9px] text-white/80 font-medium uppercase tracking-wide leading-none mb-1">
                                     ব্যয়
                                   </p>
-                                  <p className="text-xs font-bold text-red-700 dark:text-red-400 tabular-nums">
+                                  <p className="text-xs font-bold text-white tabular-nums">
                                     {fmtAmt(report?.expense ?? 0)}
                                   </p>
                                 </div>
-                                <div className="text-center py-2 px-1.5 rounded-lg bg-amber-50 dark:bg-amber-950/30">
-                                  <p className="text-[9px] text-amber-700 dark:text-amber-400 font-medium uppercase tracking-wide leading-none mb-1">
+                                <div className="text-center py-2 px-1.5 rounded-lg bg-amber-500/60 border border-amber-400/30">
+                                  <p className="text-[9px] text-white/80 font-medium uppercase tracking-wide leading-none mb-1">
                                     বাকি
                                   </p>
-                                  <p className="text-xs font-bold text-amber-700 dark:text-amber-400 tabular-nums">
+                                  <p className="text-xs font-bold text-white tabular-nums">
                                     {fmtAmt(report?.due ?? 0)}
                                   </p>
                                 </div>
-                                <div className="text-center py-2 px-1.5 rounded-lg bg-blue-50 dark:bg-blue-950/30">
-                                  <p className="text-[9px] text-blue-700 dark:text-blue-400 font-medium uppercase tracking-wide leading-none mb-1">
+                                <div className="text-center py-2 px-1.5 rounded-lg bg-blue-600/60 border border-blue-400/30">
+                                  <p className="text-[9px] text-white/80 font-medium uppercase tracking-wide leading-none mb-1">
                                     পরিশোধ
                                   </p>
-                                  <p className="text-xs font-bold text-blue-700 dark:text-blue-400 tabular-nums">
+                                  <p className="text-xs font-bold text-white tabular-nums">
                                     {fmtAmt(report?.paid ?? 0)}
                                   </p>
                                 </div>
@@ -1656,53 +1701,45 @@ export default function App() {
                 <SummaryCard
                   label="আয় / Income"
                   value={totalIncome}
-                  colorClass="text-emerald-600 dark:text-emerald-400"
-                  bgClass="bg-emerald-50 dark:bg-emerald-950/40 border-emerald-200/60 dark:border-emerald-900/50"
-                  icon={<TrendingUp className="h-4 w-4 text-emerald-500" />}
+                  colorClass="text-white"
+                  bgClass="bg-emerald-600/70 border-emerald-400/40"
+                  icon={<TrendingUp className="h-4 w-4 text-white" />}
                 />
                 <SummaryCard
                   label="ব্যয় / Expense"
                   value={totalExpense}
-                  colorClass="text-red-600 dark:text-red-400"
-                  bgClass="bg-red-50 dark:bg-red-950/40 border-red-200/60 dark:border-red-900/50"
-                  icon={<TrendingDown className="h-4 w-4 text-red-500" />}
+                  colorClass="text-white"
+                  bgClass="bg-red-600/70 border-red-400/40"
+                  icon={<TrendingDown className="h-4 w-4 text-white" />}
                 />
                 <SummaryCard
                   label="বাকি / Due"
                   value={totalDue}
-                  colorClass="text-amber-600 dark:text-amber-400"
-                  bgClass="bg-amber-50 dark:bg-amber-950/40 border-amber-200/60 dark:border-amber-900/50"
-                  icon={<Clock className="h-4 w-4 text-amber-500" />}
+                  colorClass="text-white"
+                  bgClass="bg-amber-500/70 border-amber-400/40"
+                  icon={<Clock className="h-4 w-4 text-white" />}
                 />
                 <SummaryCard
                   label="পরিশোধ / Paid"
                   value={totalPaid}
-                  colorClass="text-blue-600 dark:text-blue-400"
-                  bgClass="bg-blue-50 dark:bg-blue-950/40 border-blue-200/60 dark:border-blue-900/50"
-                  icon={<CheckCircle className="h-4 w-4 text-blue-500" />}
+                  colorClass="text-white"
+                  bgClass="bg-blue-600/70 border-blue-400/40"
+                  icon={<CheckCircle className="h-4 w-4 text-white" />}
                 />
                 <div
                   className={`col-span-2 sm:col-span-1 rounded-lg border p-3 text-center shadow-xs transition-colors ${
                     profit >= 0
-                      ? "bg-emerald-50 dark:bg-emerald-950/40 border-emerald-200/60 dark:border-emerald-900/50"
-                      : "bg-red-50 dark:bg-red-950/40 border-red-200/60 dark:border-red-900/50"
+                      ? "bg-emerald-600/70 border-emerald-400/40"
+                      : "bg-red-600/70 border-red-400/40"
                   }`}
                 >
                   <div className="flex items-center justify-center gap-1 mb-1">
-                    <BarChart3
-                      className={`h-4 w-4 ${profit >= 0 ? "text-emerald-500" : "text-red-500"}`}
-                    />
+                    <BarChart3 className="h-4 w-4 text-white" />
                   </div>
-                  <p className="text-xs text-muted-foreground font-medium">
+                  <p className="text-xs text-white/80 font-medium">
                     লাভ / Profit
                   </p>
-                  <p
-                    className={`font-bold text-lg leading-tight tabular-nums ${
-                      profit >= 0
-                        ? "text-emerald-600 dark:text-emerald-400"
-                        : "text-red-600 dark:text-red-400"
-                    }`}
-                  >
+                  <p className="font-bold text-lg leading-tight tabular-nums text-white">
                     {profit.toLocaleString()}
                   </p>
                 </div>
@@ -1783,23 +1820,23 @@ export default function App() {
                               <td className="px-3 py-2 text-muted-foreground hidden lg:table-cell">
                                 {row.customer.address}
                               </td>
-                              <td className="px-3 py-2 text-right font-semibold text-emerald-600 dark:text-emerald-400 tabular-nums">
+                              <td className="px-3 py-2 text-right font-semibold text-emerald-300 tabular-nums">
                                 {row.income.toLocaleString()}
                               </td>
-                              <td className="px-3 py-2 text-right font-semibold text-red-600 dark:text-red-400 tabular-nums">
+                              <td className="px-3 py-2 text-right font-semibold text-red-300 tabular-nums">
                                 {row.expense.toLocaleString()}
                               </td>
-                              <td className="px-3 py-2 text-right font-semibold text-amber-600 dark:text-amber-400 tabular-nums">
+                              <td className="px-3 py-2 text-right font-semibold text-amber-300 tabular-nums">
                                 {row.due.toLocaleString()}
                               </td>
-                              <td className="px-3 py-2 text-right font-semibold text-blue-600 dark:text-blue-400 tabular-nums">
+                              <td className="px-3 py-2 text-right font-semibold text-blue-300 tabular-nums">
                                 {row.paid.toLocaleString()}
                               </td>
                               <td
                                 className={`px-3 py-2 text-right font-bold tabular-nums ${
                                   row.profit >= 0
-                                    ? "text-emerald-600 dark:text-emerald-400"
-                                    : "text-red-600 dark:text-red-400"
+                                    ? "text-emerald-300"
+                                    : "text-red-300"
                                 }`}
                               >
                                 {row.profit.toLocaleString()}
@@ -1837,7 +1874,7 @@ export default function App() {
                             dataKey="name"
                             tick={{
                               fontSize: 10,
-                              fill: darkMode ? "#94a3b8" : "#64748b",
+                              fill: "rgba(255,255,255,0.8)",
                             }}
                             axisLine={false}
                             tickLine={false}
@@ -1845,7 +1882,7 @@ export default function App() {
                           <YAxis
                             tick={{
                               fontSize: 11,
-                              fill: darkMode ? "#94a3b8" : "#64748b",
+                              fill: "rgba(255,255,255,0.8)",
                             }}
                             axisLine={false}
                             tickLine={false}
@@ -1855,10 +1892,11 @@ export default function App() {
                           <Tooltip
                             formatter={(v) => [Number(v).toLocaleString(), ""]}
                             contentStyle={{
-                              background: darkMode ? "#1e2433" : "#fff",
-                              border: `1px solid ${darkMode ? "rgba(255,255,255,0.08)" : "#e2e8f0"}`,
+                              background: "rgba(15,20,40,0.92)",
+                              border: "1px solid rgba(255,255,255,0.15)",
                               borderRadius: 8,
                               fontSize: 12,
+                              color: "#fff",
                             }}
                           />
                           <Bar dataKey="value" radius={[6, 6, 0, 0]}>
@@ -1920,16 +1958,17 @@ export default function App() {
                                 ];
                               }}
                               contentStyle={{
-                                background: darkMode ? "#1e2433" : "#fff",
-                                border: `1px solid ${darkMode ? "rgba(255,255,255,0.08)" : "#e2e8f0"}`,
+                                background: "rgba(15,20,40,0.92)",
+                                border: "1px solid rgba(255,255,255,0.15)",
                                 borderRadius: 8,
                                 fontSize: 12,
+                                color: "#fff",
                               }}
                             />
                             <Legend
                               wrapperStyle={{
                                 fontSize: 12,
-                                color: darkMode ? "#cbd5e1" : "#374151",
+                                color: "rgba(255,255,255,0.9)",
                                 paddingTop: 8,
                               }}
                             />
@@ -1944,7 +1983,26 @@ export default function App() {
           )}
 
           {/* ═══════════════════════════════════════════════════════════
-              TAB 4 — HELP
+              TAB 5 — SETTINGS
+          ═══════════════════════════════════════════════════════════ */}
+          {activeTab === "settings" && (
+            <SettingsPage
+              darkMode={darkMode}
+              onToggleDark={() => setDarkMode((d) => !d)}
+              onLock={() => setIsUnlocked(false)}
+              onChangePin={() => setChangePinOpen(true)}
+              onExportCSV={exportCustomersCSV}
+              onExportJSON={exportJSON}
+              onImportCSV={() => csvImportRef.current?.click()}
+              onImportJSON={() => jsonImportRef.current?.click()}
+              onClearTransactions={clearAllData}
+              customerCount={customers.length}
+              transactionCount={transactions.length}
+            />
+          )}
+
+          {/* ═══════════════════════════════════════════════════════════
+              TAB 6 — HELP
           ═══════════════════════════════════════════════════════════ */}
           {activeTab === "help" && <HelpPage />}
 
@@ -2000,7 +2058,7 @@ function SummaryCard({
       className={`rounded-lg border p-3 text-center shadow-xs transition-colors ${bgClass}`}
     >
       <div className="flex items-center justify-center gap-1 mb-1">{icon}</div>
-      <p className="text-xs text-muted-foreground font-medium">{label}</p>
+      <p className="text-xs text-white/80 font-medium">{label}</p>
       <p
         className={`font-bold text-lg leading-tight tabular-nums ${colorClass}`}
       >

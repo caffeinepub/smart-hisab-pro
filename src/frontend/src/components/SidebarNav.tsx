@@ -5,13 +5,21 @@ import {
   FileText,
   HelpCircle,
   KeyRound,
+  LayoutDashboard,
   Lock,
   Moon,
+  Settings,
   Sun,
   Users,
 } from "lucide-react";
 
-type TabId = "customers" | "transactions" | "reports" | "help";
+type TabId =
+  | "dashboard"
+  | "customers"
+  | "transactions"
+  | "reports"
+  | "settings"
+  | "help";
 
 interface SidebarNavProps {
   activeTab: TabId;
@@ -32,6 +40,12 @@ const navItems: {
   icon: React.ReactNode;
 }[] = [
   {
+    id: "dashboard",
+    labelBn: "ড্যাশবোর্ড",
+    labelEn: "Dashboard",
+    icon: <LayoutDashboard className="h-5 w-5 flex-shrink-0" />,
+  },
+  {
     id: "customers",
     labelBn: "কাস্টমার প্রোফাইল",
     labelEn: "Customers",
@@ -48,6 +62,12 @@ const navItems: {
     labelBn: "কাস্টমার রিপোর্ট",
     labelEn: "Reports",
     icon: <FileText className="h-5 w-5 flex-shrink-0" />,
+  },
+  {
+    id: "settings",
+    labelBn: "সেটিংস",
+    labelEn: "Settings",
+    icon: <Settings className="h-5 w-5 flex-shrink-0" />,
   },
   {
     id: "help",
@@ -70,7 +90,7 @@ export default function SidebarNav({
 }: SidebarNavProps) {
   return (
     <aside
-      className={`w-60 xl:w-64 flex-shrink-0 flex flex-col h-screen sticky top-0 bg-sidebar border-r border-sidebar-border shadow-sm ${className}`}
+      className={`w-60 xl:w-64 flex-shrink-0 flex flex-col h-screen sticky top-0 sidebar-glass border-r border-sidebar-border shadow-sm ${className}`}
     >
       {/* Logo & App Name */}
       <div className="px-5 py-5 border-b border-sidebar-border">
@@ -82,10 +102,10 @@ export default function SidebarNav({
           />
           <div className="min-w-0">
             <h1 className="font-bold text-sidebar-foreground text-base leading-tight tracking-tight">
-              Smart Hisab Pro
+              Atrai Online Bhumisheba And MA Computer
             </h1>
             <p className="text-xs text-sidebar-accent-foreground/60 leading-tight mt-0.5">
-              Financial Tracker
+              ভূমি সেবা ও কম্পিউটার
             </p>
           </div>
         </div>

@@ -29,8 +29,9 @@ export default function HelpPage() {
       content: (
         <div className="space-y-4">
           <p className="text-sm text-muted-foreground">
-            Smart Hisab Pro ব্যবহার করতে এই ধাপগুলো অনুসরণ করুন / Follow these steps
-            to use Smart Hisab Pro:
+            Atrai Online Bhumisheba And MA Computer ব্যবহার করতে এই ধাপগুলো অনুসরণ
+            করুন / Follow these steps to use Atrai Online Bhumisheba And MA
+            Computer:
           </p>
           <div className="space-y-3">
             {[
@@ -463,7 +464,8 @@ export default function HelpPage() {
               সাহায্য কেন্দ্র
             </h2>
             <p className="text-xs text-muted-foreground mt-0.5">
-              Help Center — Smart Hisab Pro ব্যবহার নির্দেশিকা / User Guide
+              Help Center — Atrai Online Bhumisheba And MA Computer ব্যবহার
+              নির্দেশিকা / User Guide
             </p>
           </div>
         </div>
@@ -517,8 +519,9 @@ export default function HelpPage() {
           আরও সাহায্য দরকার? / Need more help?
         </p>
         <p className="text-xs text-muted-foreground">
-          Smart Hisab Pro — আপনার হিসাব সহজ করুন / Simplify your accounts. Built
-          with <span className="text-red-500">♥</span> using{" "}
+          Atrai Online Bhumisheba And MA Computer — আপনার সেবা সহজ করুন / Simplify
+          your services. Built with <span className="text-red-500">♥</span>{" "}
+          using{" "}
           <a
             href="https://caffeine.ai"
             target="_blank"

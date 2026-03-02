@@ -5,80 +5,81 @@
 @layer base {
   :root {
     --radius: 0.625rem;
-    --background: 0.98 0 0;
-    --foreground: 0.15 0.02 250;
-    --card: 1 0 0;
-    --card-foreground: 0.15 0.02 250;
-    --popover: 1 0 0;
-    --popover-foreground: 0.15 0.02 250;
-    --primary: 0.35 0.12 250;
-    --primary-foreground: 0.98 0 0;
-    --secondary: 0.94 0.01 250;
-    --secondary-foreground: 0.35 0.12 250;
-    --muted: 0.95 0.005 250;
-    --muted-foreground: 0.5 0.02 250;
-    --accent: 0.92 0.02 250;
-    --accent-foreground: 0.25 0.08 250;
+    --background: 0 0 0 / 0;
+    --foreground: 1 0 0;
+    --card: 1 0 0 / 0.12;
+    --card-foreground: 1 0 0;
+    --popover: 0.15 0.02 250 / 0.95;
+    --popover-foreground: 1 0 0;
+    --primary: 0.75 0.18 250;
+    --primary-foreground: 1 0 0;
+    --secondary: 1 0 0 / 0.12;
+    --secondary-foreground: 1 0 0;
+    --muted: 1 0 0 / 0.10;
+    --muted-foreground: 1 0 0 / 0.75;
+    --accent: 1 0 0 / 0.12;
+    --accent-foreground: 1 0 0;
     --destructive: 0.58 0.24 27;
-    --destructive-foreground: 0.98 0 0;
-    --border: 0.88 0.01 250;
-    --input: 0.88 0.01 250;
-    --ring: 0.45 0.12 250;
+    --destructive-foreground: 1 0 0;
+    --border: 1 0 0 / 0.20;
+    --input: 1 0 0 / 0.15;
+    --ring: 1 0 0 / 0.5;
     --chart-1: 0.646 0.222 41.116;
     --chart-2: 0.6 0.118 184.704;
     --chart-3: 0.398 0.07 227.392;
     --chart-4: 0.828 0.189 84.429;
     --chart-5: 0.769 0.188 70.08;
-    --sidebar: 0.98 0 0;
-    --sidebar-foreground: 0.15 0.02 250;
-    --sidebar-primary: 0.35 0.12 250;
-    --sidebar-primary-foreground: 0.98 0 0;
-    --sidebar-accent: 0.92 0.02 250;
-    --sidebar-accent-foreground: 0.25 0.08 250;
-    --sidebar-border: 0.88 0.01 250;
-    --sidebar-ring: 0.45 0.12 250;
+    --sidebar: 1 0 0 / 0.06;
+    --sidebar-foreground: 1 0 0;
+    --sidebar-primary: 0.75 0.18 250;
+    --sidebar-primary-foreground: 1 0 0;
+    --sidebar-accent: 1 0 0 / 0.10;
+    --sidebar-accent-foreground: 1 0 0;
+    --sidebar-border: 1 0 0 / 0.18;
+    --sidebar-ring: 1 0 0 / 0.5;
   }
 
   .dark {
-    --background: 0.12 0.01 250;
-    --foreground: 0.95 0.01 250;
-    --card: 0.16 0.015 250;
-    --card-foreground: 0.95 0.01 250;
-    --popover: 0.18 0.015 250;
-    --popover-foreground: 0.95 0.01 250;
-    --primary: 0.65 0.15 250;
-    --primary-foreground: 0.12 0.01 250;
-    --secondary: 0.22 0.02 250;
-    --secondary-foreground: 0.85 0.01 250;
-    --muted: 0.22 0.02 250;
-    --muted-foreground: 0.6 0.02 250;
-    --accent: 0.28 0.03 250;
-    --accent-foreground: 0.9 0.01 250;
+    --background: 0 0 0 / 0;
+    --foreground: 1 0 0;
+    --card: 1 0 0 / 0.10;
+    --card-foreground: 1 0 0;
+    --popover: 0.12 0.015 250 / 0.97;
+    --popover-foreground: 1 0 0;
+    --primary: 0.65 0.18 250;
+    --primary-foreground: 1 0 0;
+    --secondary: 1 0 0 / 0.10;
+    --secondary-foreground: 1 0 0;
+    --muted: 1 0 0 / 0.08;
+    --muted-foreground: 1 0 0 / 0.70;
+    --accent: 1 0 0 / 0.10;
+    --accent-foreground: 1 0 0;
     --destructive: 0.7 0.19 22;
-    --destructive-foreground: 0.16 0.015 250;
-    --border: 1 0 0 / 10%;
-    --input: 1 0 0 / 15%;
-    --ring: 0.55 0.1 250;
+    --destructive-foreground: 1 0 0;
+    --border: 1 0 0 / 0.15;
+    --input: 1 0 0 / 0.12;
+    --ring: 1 0 0 / 0.45;
     --chart-1: 0.488 0.243 264.376;
     --chart-2: 0.696 0.17 162.48;
     --chart-3: 0.769 0.188 70.08;
     --chart-4: 0.627 0.265 303.9;
     --chart-5: 0.645 0.246 16.439;
-    --sidebar: 0.14 0.015 250;
-    --sidebar-foreground: 0.95 0.01 250;
-    --sidebar-primary: 0.65 0.15 250;
-    --sidebar-primary-foreground: 0.12 0.01 250;
-    --sidebar-accent: 0.28 0.03 250;
-    --sidebar-accent-foreground: 0.9 0.01 250;
-    --sidebar-border: 1 0 0 / 10%;
-    --sidebar-ring: 0.55 0.1 250;
+    --sidebar: 1 0 0 / 0.06;
+    --sidebar-foreground: 1 0 0;
+    --sidebar-primary: 0.65 0.18 250;
+    --sidebar-primary-foreground: 1 0 0;
+    --sidebar-accent: 1 0 0 / 0.10;
+    --sidebar-accent-foreground: 1 0 0;
+    --sidebar-border: 1 0 0 / 0.15;
+    --sidebar-ring: 1 0 0 / 0.45;
   }
 
   * {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    background: transparent;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -150,14 +151,14 @@
   }
 
   .pin-card {
-    background: oklch(1 0 0 / 0.85);
+    background: oklch(0.10 0.02 250 / 0.75);
     backdrop-filter: blur(20px);
-    border: 1px solid oklch(0.88 0.01 250 / 0.6);
+    border: 1px solid oklch(1 0 0 / 0.15);
   }
   .dark .pin-card,
   .pin-screen-bg.dark .pin-card {
-    background: oklch(0.16 0.015 250 / 0.90);
-    border: 1px solid oklch(1 0 0 / 0.08);
+    background: oklch(0.10 0.02 250 / 0.85);
+    border: 1px solid oklch(1 0 0 / 0.10);
   }
 
   .pin-icon-ring {
@@ -171,53 +172,53 @@
   }
 
   .pin-divider {
-    background: oklch(0.88 0.01 250);
+    background: oklch(1 0 0 / 0.20);
   }
   .dark .pin-divider,
   .pin-screen-bg.dark .pin-divider {
-    background: oklch(1 0 0 / 0.08);
+    background: oklch(1 0 0 / 0.15);
   }
 
   .pin-text-primary {
-    color: oklch(0.15 0.02 250);
+    color: oklch(1 0 0);
   }
   .dark .pin-text-primary,
   .pin-screen-bg.dark .pin-text-primary {
-    color: oklch(0.95 0.01 250);
+    color: oklch(1 0 0);
   }
 
   .pin-text-muted {
-    color: oklch(0.50 0.02 250);
+    color: oklch(1 0 0 / 0.75);
   }
   .dark .pin-text-muted,
   .pin-screen-bg.dark .pin-text-muted {
-    color: oklch(0.60 0.02 250);
+    color: oklch(1 0 0 / 0.70);
   }
 
   .pin-text-accent {
-    color: oklch(0.35 0.12 250);
+    color: oklch(0.85 0.12 250);
   }
   .dark .pin-text-accent,
   .pin-screen-bg.dark .pin-text-accent {
-    color: oklch(0.65 0.15 250);
+    color: oklch(0.85 0.15 250);
   }
 
   .pin-icon-accent {
-    color: oklch(0.35 0.12 250);
+    color: oklch(0.85 0.12 250);
   }
   .dark .pin-icon-accent,
   .pin-screen-bg.dark .pin-icon-accent {
-    color: oklch(0.65 0.15 250);
+    color: oklch(0.85 0.15 250);
   }
 
   .pin-digit-empty {
-    border-color: oklch(0.80 0.02 250);
-    color: oklch(0.15 0.02 250);
+    border-color: oklch(1 0 0 / 0.40);
+    color: oklch(1 0 0);
   }
   .dark .pin-digit-empty,
   .pin-screen-bg.dark .pin-digit-empty {
-    border-color: oklch(1 0 0 / 0.18);
-    color: oklch(0.95 0.01 250);
+    border-color: oklch(1 0 0 / 0.30);
+    color: oklch(1 0 0);
   }
 
   .pin-digit-filled {
@@ -265,6 +266,52 @@
   .pin-screen-bg.dark .pin-submit-btn:hover:not(:disabled) {
     background: linear-gradient(135deg, oklch(0.60 0.20 250), oklch(0.65 0.22 245));
   }
+}
+
+/* ── App Inner Pages — Gradient Background Bleed-Through ──────── */
+.sidebar-glass {
+  background: oklch(0 0 0 / 0.35);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+.dark .sidebar-glass {
+  background: oklch(0 0 0 / 0.50);
+}
+
+.main-glass {
+  background: oklch(0 0 0 / 0.15);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.dark .main-glass {
+  background: oklch(0 0 0 / 0.30);
+}
+
+/* ── Force white text everywhere on background image ──────────── */
+/* Cards and popovers get a dark semi-transparent base for legibility */
+.bg-card, [class*="bg-card"] {
+  color: white !important;
+}
+
+/* Ensure all standard text nodes inherit white */
+p, h1, h2, h3, h4, h5, h6, span, label, td, th, div, li, a:not([class*="text-primary"]) {
+  color: inherit;
+}
+
+/* Override any remaining light-themed text */
+.text-gray-900, .text-gray-800, .text-gray-700, .text-slate-900, .text-slate-800, .text-slate-700,
+.text-zinc-900, .text-zinc-800, .text-zinc-700, .text-neutral-900, .text-neutral-800 {
+  color: white !important;
+}
+
+/* Selects and inputs should have white text on dark semi-transparent background */
+select, input, textarea {
+  color: white !important;
+  background-color: oklch(1 0 0 / 0.12) !important;
+}
+select option {
+  background-color: oklch(0.15 0.02 250);
+  color: white;
 }
 
 /* ── Invoice / PDF Print ─────────────────────────────────────── */
