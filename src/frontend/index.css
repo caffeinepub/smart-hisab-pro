@@ -1,0 +1,294 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.625rem;
+    --background: 0.98 0 0;
+    --foreground: 0.15 0.02 250;
+    --card: 1 0 0;
+    --card-foreground: 0.15 0.02 250;
+    --popover: 1 0 0;
+    --popover-foreground: 0.15 0.02 250;
+    --primary: 0.35 0.12 250;
+    --primary-foreground: 0.98 0 0;
+    --secondary: 0.94 0.01 250;
+    --secondary-foreground: 0.35 0.12 250;
+    --muted: 0.95 0.005 250;
+    --muted-foreground: 0.5 0.02 250;
+    --accent: 0.92 0.02 250;
+    --accent-foreground: 0.25 0.08 250;
+    --destructive: 0.58 0.24 27;
+    --destructive-foreground: 0.98 0 0;
+    --border: 0.88 0.01 250;
+    --input: 0.88 0.01 250;
+    --ring: 0.45 0.12 250;
+    --chart-1: 0.646 0.222 41.116;
+    --chart-2: 0.6 0.118 184.704;
+    --chart-3: 0.398 0.07 227.392;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+    --sidebar: 0.98 0 0;
+    --sidebar-foreground: 0.15 0.02 250;
+    --sidebar-primary: 0.35 0.12 250;
+    --sidebar-primary-foreground: 0.98 0 0;
+    --sidebar-accent: 0.92 0.02 250;
+    --sidebar-accent-foreground: 0.25 0.08 250;
+    --sidebar-border: 0.88 0.01 250;
+    --sidebar-ring: 0.45 0.12 250;
+  }
+
+  .dark {
+    --background: 0.12 0.01 250;
+    --foreground: 0.95 0.01 250;
+    --card: 0.16 0.015 250;
+    --card-foreground: 0.95 0.01 250;
+    --popover: 0.18 0.015 250;
+    --popover-foreground: 0.95 0.01 250;
+    --primary: 0.65 0.15 250;
+    --primary-foreground: 0.12 0.01 250;
+    --secondary: 0.22 0.02 250;
+    --secondary-foreground: 0.85 0.01 250;
+    --muted: 0.22 0.02 250;
+    --muted-foreground: 0.6 0.02 250;
+    --accent: 0.28 0.03 250;
+    --accent-foreground: 0.9 0.01 250;
+    --destructive: 0.7 0.19 22;
+    --destructive-foreground: 0.16 0.015 250;
+    --border: 1 0 0 / 10%;
+    --input: 1 0 0 / 15%;
+    --ring: 0.55 0.1 250;
+    --chart-1: 0.488 0.243 264.376;
+    --chart-2: 0.696 0.17 162.48;
+    --chart-3: 0.769 0.188 70.08;
+    --chart-4: 0.627 0.265 303.9;
+    --chart-5: 0.645 0.246 16.439;
+    --sidebar: 0.14 0.015 250;
+    --sidebar-foreground: 0.95 0.01 250;
+    --sidebar-primary: 0.65 0.15 250;
+    --sidebar-primary-foreground: 0.12 0.01 250;
+    --sidebar-accent: 0.28 0.03 250;
+    --sidebar-accent-foreground: 0.9 0.01 250;
+    --sidebar-border: 1 0 0 / 10%;
+    --sidebar-ring: 0.55 0.1 250;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .financial-gradient {
+    background: linear-gradient(135deg, oklch(0.35 0.12 250), oklch(0.28 0.1 260));
+  }
+  .dark .financial-gradient {
+    background: linear-gradient(135deg, oklch(0.22 0.04 250), oklch(0.18 0.03 260));
+  }
+
+  /* ── PIN Screen ──────────────────────────────────────────────── */
+  .pin-screen-bg {
+    background: oklch(0.97 0.008 250);
+  }
+  .dark .pin-screen-bg,
+  .pin-screen-bg.dark {
+    background: oklch(0.10 0.015 250);
+  }
+
+  .pin-blob-1 {
+    position: absolute;
+    top: -20%;
+    left: -10%;
+    width: 55vw;
+    height: 55vw;
+    max-width: 480px;
+    max-height: 480px;
+    border-radius: 50%;
+    background: radial-gradient(circle, oklch(0.55 0.18 250 / 0.12), transparent 70%);
+    filter: blur(60px);
+  }
+  .pin-blob-2 {
+    position: absolute;
+    bottom: -15%;
+    right: -10%;
+    width: 50vw;
+    height: 50vw;
+    max-width: 440px;
+    max-height: 440px;
+    border-radius: 50%;
+    background: radial-gradient(circle, oklch(0.60 0.16 210 / 0.10), transparent 70%);
+    filter: blur(70px);
+  }
+  .pin-blob-3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40vw;
+    height: 40vw;
+    max-width: 360px;
+    max-height: 360px;
+    border-radius: 50%;
+    background: radial-gradient(circle, oklch(0.65 0.14 260 / 0.07), transparent 70%);
+    filter: blur(80px);
+  }
+  .dark .pin-blob-1,
+  .pin-screen-bg.dark .pin-blob-1 {
+    background: radial-gradient(circle, oklch(0.55 0.18 250 / 0.18), transparent 70%);
+  }
+  .dark .pin-blob-2,
+  .pin-screen-bg.dark .pin-blob-2 {
+    background: radial-gradient(circle, oklch(0.60 0.16 210 / 0.15), transparent 70%);
+  }
+
+  .pin-card {
+    background: oklch(1 0 0 / 0.85);
+    backdrop-filter: blur(20px);
+    border: 1px solid oklch(0.88 0.01 250 / 0.6);
+  }
+  .dark .pin-card,
+  .pin-screen-bg.dark .pin-card {
+    background: oklch(0.16 0.015 250 / 0.90);
+    border: 1px solid oklch(1 0 0 / 0.08);
+  }
+
+  .pin-icon-ring {
+    background: linear-gradient(135deg, oklch(0.35 0.12 250 / 0.12), oklch(0.50 0.16 220 / 0.10));
+    border: 1.5px solid oklch(0.35 0.12 250 / 0.2);
+  }
+  .dark .pin-icon-ring,
+  .pin-screen-bg.dark .pin-icon-ring {
+    background: linear-gradient(135deg, oklch(0.65 0.15 250 / 0.15), oklch(0.55 0.12 220 / 0.12));
+    border: 1.5px solid oklch(0.65 0.15 250 / 0.25);
+  }
+
+  .pin-divider {
+    background: oklch(0.88 0.01 250);
+  }
+  .dark .pin-divider,
+  .pin-screen-bg.dark .pin-divider {
+    background: oklch(1 0 0 / 0.08);
+  }
+
+  .pin-text-primary {
+    color: oklch(0.15 0.02 250);
+  }
+  .dark .pin-text-primary,
+  .pin-screen-bg.dark .pin-text-primary {
+    color: oklch(0.95 0.01 250);
+  }
+
+  .pin-text-muted {
+    color: oklch(0.50 0.02 250);
+  }
+  .dark .pin-text-muted,
+  .pin-screen-bg.dark .pin-text-muted {
+    color: oklch(0.60 0.02 250);
+  }
+
+  .pin-text-accent {
+    color: oklch(0.35 0.12 250);
+  }
+  .dark .pin-text-accent,
+  .pin-screen-bg.dark .pin-text-accent {
+    color: oklch(0.65 0.15 250);
+  }
+
+  .pin-icon-accent {
+    color: oklch(0.35 0.12 250);
+  }
+  .dark .pin-icon-accent,
+  .pin-screen-bg.dark .pin-icon-accent {
+    color: oklch(0.65 0.15 250);
+  }
+
+  .pin-digit-empty {
+    border-color: oklch(0.80 0.02 250);
+    color: oklch(0.15 0.02 250);
+  }
+  .dark .pin-digit-empty,
+  .pin-screen-bg.dark .pin-digit-empty {
+    border-color: oklch(1 0 0 / 0.18);
+    color: oklch(0.95 0.01 250);
+  }
+
+  .pin-digit-filled {
+    border-color: oklch(0.35 0.12 250);
+    color: oklch(0.35 0.12 250);
+    background: oklch(0.35 0.12 250 / 0.06);
+  }
+  .dark .pin-digit-filled,
+  .pin-screen-bg.dark .pin-digit-filled {
+    border-color: oklch(0.65 0.15 250);
+    color: oklch(0.65 0.15 250);
+    background: oklch(0.65 0.15 250 / 0.10);
+  }
+
+  .pin-digit-box:focus {
+    border-color: oklch(0.45 0.15 250);
+    box-shadow: 0 0 0 3px oklch(0.45 0.15 250 / 0.15);
+    background: oklch(0.45 0.15 250 / 0.04);
+  }
+  .dark .pin-digit-box:focus,
+  .pin-screen-bg.dark .pin-digit-box:focus {
+    border-color: oklch(0.65 0.15 250);
+    box-shadow: 0 0 0 3px oklch(0.65 0.15 250 / 0.18);
+    background: oklch(0.65 0.15 250 / 0.08);
+  }
+
+  .pin-submit-btn {
+    background: linear-gradient(135deg, oklch(0.35 0.12 250), oklch(0.42 0.16 245));
+    color: oklch(0.98 0 0);
+    border: none;
+  }
+  .pin-submit-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, oklch(0.40 0.14 250), oklch(0.47 0.18 245));
+  }
+  .pin-submit-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+  .dark .pin-submit-btn,
+  .pin-screen-bg.dark .pin-submit-btn {
+    background: linear-gradient(135deg, oklch(0.55 0.18 250), oklch(0.60 0.20 245));
+    color: oklch(0.10 0.015 250);
+  }
+  .dark .pin-submit-btn:hover:not(:disabled),
+  .pin-screen-bg.dark .pin-submit-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, oklch(0.60 0.20 250), oklch(0.65 0.22 245));
+  }
+}
+
+/* ── Invoice / PDF Print ─────────────────────────────────────── */
+#invoice-print-area {
+  display: block;
+}
+
+@media print {
+  body > * {
+    display: none !important;
+  }
+  /* Show only the invoice inside the dialog when printing */
+  #invoice-print-area {
+    display: block !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    background: #ffffff !important;
+    color: #111827 !important;
+    padding: 20px !important;
+    box-shadow: none !important;
+    border: none !important;
+    z-index: 99999 !important;
+    font-size: 12px !important;
+  }
+}

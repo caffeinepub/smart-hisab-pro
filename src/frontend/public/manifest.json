@@ -1,0 +1,13 @@
+{
+  "name": "Smart Hisab Pro",
+  "short_name": "Hisab Pro",
+  "description": "Financial tracker for customers, income, expenses, dues and payments.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1d4ed8",
+  "icons": [
+    { "src": "/assets/uploads/logo-1.jpg", "sizes": "192x192", "type": "image/jpeg" },
+    { "src": "/assets/uploads/logo-1.jpg", "sizes": "512x512", "type": "image/jpeg" }
+  ]
+}
