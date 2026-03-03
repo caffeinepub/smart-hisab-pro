@@ -26,7 +26,6 @@ function verifyPin(pin: string): boolean {
 }
 
 export default function PinLogin({ mode, onUnlock }: PinLoginProps) {
-  // Setup flow: "enter" → "confirm"
   const [setupStep, setSetupStep] = useState<"enter" | "confirm">("enter");
   const [firstPin, setFirstPin] = useState("");
 
@@ -42,7 +41,6 @@ export default function PinLogin({ mode, onUnlock }: PinLoginProps) {
     null,
   ]);
 
-  // Focus first box on mount only
   useEffect(() => {
     inputRefs.current[0]?.focus();
   }, []);
@@ -73,7 +71,6 @@ export default function PinLogin({ mode, onUnlock }: PinLoginProps) {
       return;
     }
 
-    // Setup mode
     if (setupStep === "enter") {
       setFirstPin(currentPin);
       setSetupStep("confirm");
@@ -82,7 +79,6 @@ export default function PinLogin({ mode, onUnlock }: PinLoginProps) {
       return;
     }
 
-    // confirm step
     if (currentPin !== firstPin) {
       triggerError("PINs don't match. Start over.");
       setSetupStep("enter");
@@ -120,7 +116,6 @@ export default function PinLogin({ mode, onUnlock }: PinLoginProps) {
   }
 
   function handleChange(idx: number, value: string) {
-    // Accept only a single digit
     const digit = value.replace(/\D/g, "").slice(-1);
     const next = [...digits];
     next[idx] = digit;
@@ -131,12 +126,10 @@ export default function PinLogin({ mode, onUnlock }: PinLoginProps) {
       inputRefs.current[idx + 1]?.focus();
     }
 
-    // Auto-submit when all 4 filled
     if (digit && idx === 3) {
       const pin = [...next].join("");
       if (pin.length === 4) {
         setTimeout(() => {
-          // Use pin directly from closure to avoid stale state
           submitPin(pin);
         }, 80);
       }
@@ -157,7 +150,6 @@ export default function PinLogin({ mode, onUnlock }: PinLoginProps) {
       setFirstPin(pin);
       setSetupStep("confirm");
       setError("");
-      // Reset is handled after state update
       setDigits(["", "", "", ""]);
       setTimeout(() => inputRefs.current[0]?.focus(), 10);
       return;
@@ -180,7 +172,6 @@ export default function PinLogin({ mode, onUnlock }: PinLoginProps) {
 
   function handleForgotPin() {
     if (forgotWarning) {
-      // Second click: erase everything
       for (const key of STORAGE_KEYS) {
         localStorage.removeItem(key);
       }
@@ -213,35 +204,57 @@ export default function PinLogin({ mode, onUnlock }: PinLoginProps) {
         backgroundImage:
           "url('/assets/uploads/38dbe6b3-fd90-4c94-9ec9-2088d6be73a5-1.jpg')",
         backgroundSize: "cover",
-        backgroundPosition: "center",
+        backgroundPosition: "center top",
         backgroundRepeat: "no-repeat",
       }}
       aria-label="PIN lock screen"
     >
-      {/* Subtle overlay for card readability */}
+      {/* Soft navy overlay — matches the image's sky-blue tone */}
       <div
-        className="absolute inset-0 bg-black/15 pointer-events-none"
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(160deg, oklch(0.18 0.06 240 / 0.55) 0%, oklch(0.12 0.04 250 / 0.70) 100%)",
+        }}
         aria-hidden="true"
       />
 
       <motion.div
-        initial={{ opacity: 0, y: 24, scale: 0.96 }}
+        initial={{ opacity: 0, y: 28, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
         className="relative z-10 w-full max-w-sm mx-4"
       >
-        {/* Card */}
-        <div className="pin-card rounded-2xl shadow-2xl p-8 flex flex-col items-center gap-6 backdrop-blur-md">
-          {/* Brand */}
-          <div className="flex flex-col items-center gap-3">
+        {/* ── PIN Card — navy glass matching the image's color palette ── */}
+        <div
+          className="rounded-2xl p-8 flex flex-col items-center gap-6"
+          style={{
+            background: "oklch(0.13 0.05 235 / 0.88)",
+            backdropFilter: "blur(28px)",
+            WebkitBackdropFilter: "blur(28px)",
+            border: "1px solid oklch(0.82 0.14 62 / 0.35)",
+            boxShadow:
+              "0 32px 80px oklch(0 0 0 / 0.60), 0 0 0 1px oklch(0.82 0.14 62 / 0.10) inset, 0 0 60px oklch(0.45 0.08 240 / 0.15)",
+          }}
+        >
+          {/* ── Brand block ── */}
+          <div className="flex flex-col items-center gap-3 w-full">
+            {/* Logo ring — gold border matching the image's gold accent */}
             <div
-              className="pin-icon-ring w-18 h-18 rounded-full flex items-center justify-center"
-              style={{ width: "5rem", height: "5rem" }}
+              className="rounded-full flex items-center justify-center"
+              style={{
+                width: "5.5rem",
+                height: "5.5rem",
+                background:
+                  "linear-gradient(135deg, oklch(0.82 0.14 62 / 0.20), oklch(0.72 0.12 68 / 0.12))",
+                border: "2px solid oklch(0.82 0.14 62 / 0.50)",
+                boxShadow: "0 0 24px oklch(0.82 0.14 62 / 0.25)",
+              }}
             >
               <img
                 src="/assets/uploads/logo-1.jpg"
                 alt="Logo"
-                className="w-14 h-14 rounded-full object-contain"
+                className="w-16 h-16 rounded-full object-contain"
                 onError={(e) => {
                   (e.target as HTMLImageElement).style.display = "none";
                   (
@@ -251,63 +264,99 @@ export default function PinLogin({ mode, onUnlock }: PinLoginProps) {
               />
               <span className="text-3xl select-none hidden">💰</span>
             </div>
-            <div className="text-center space-y-1.5">
-              <h1
-                className="pin-text-primary text-shadow-md"
-                style={{
-                  fontFamily: "'Playfair Display', Georgia, serif",
-                  fontSize: "1.35rem",
-                  fontWeight: 800,
-                  letterSpacing: "-0.01em",
-                  lineHeight: 1.2,
-                }}
-              >
-                Atrai Online Bhumisheba
-              </h1>
+
+            {/* App title — Playfair Display serif, like the logo image typography */}
+            <div className="text-center space-y-1">
+              {/* Decorative gold line above title */}
               <div
-                className="pin-text-primary text-shadow-md"
+                className="mx-auto mb-2"
+                style={{
+                  width: "3rem",
+                  height: "2px",
+                  background:
+                    "linear-gradient(90deg, transparent, oklch(0.82 0.14 62), transparent)",
+                  borderRadius: "2px",
+                }}
+              />
+              <h1
                 style={{
                   fontFamily: "'Playfair Display', Georgia, serif",
-                  fontSize: "1.35rem",
+                  fontSize: "1.45rem",
                   fontWeight: 800,
                   letterSpacing: "-0.01em",
-                  lineHeight: 1.2,
+                  lineHeight: 1.15,
+                  color: "white",
+                  textShadow:
+                    "0 2px 10px oklch(0 0 0 / 0.55), 0 0 30px oklch(0 0 0 / 0.25)",
                 }}
               >
-                &amp; MA Computer
-              </div>
-              {/* Bengali subtitle */}
+                Atrai Online
+              </h1>
+              <h1
+                style={{
+                  fontFamily: "'Playfair Display', Georgia, serif",
+                  fontSize: "1.45rem",
+                  fontWeight: 800,
+                  letterSpacing: "-0.01em",
+                  lineHeight: 1.15,
+                  color: "white",
+                  textShadow:
+                    "0 2px 10px oklch(0 0 0 / 0.55), 0 0 30px oklch(0 0 0 / 0.25)",
+                }}
+              >
+                Bhumisheba &amp; MA Computer
+              </h1>
+              {/* Gold accent subtitle */}
               <p
                 style={{
                   fontFamily: "'Outfit', sans-serif",
-                  fontSize: "0.75rem",
-                  fontWeight: 600,
-                  letterSpacing: "0.05em",
-                  color: "oklch(0.88 0.14 62)",
-                  textShadow: "0 0 12px oklch(0.82 0.15 62 / 0.40)",
-                }}
-              >
-                স্মার্ট হিসাব ব্যবস্থাপনা
-              </p>
-              <p
-                style={{
-                  fontFamily: "'Outfit', sans-serif",
-                  fontSize: "0.65rem",
-                  fontWeight: 500,
+                  fontSize: "0.78rem",
+                  fontWeight: 700,
                   letterSpacing: "0.08em",
                   textTransform: "uppercase",
-                  color: "oklch(1 0 0 / 0.55)",
+                  color: "oklch(0.88 0.14 62)",
+                  textShadow: "0 0 16px oklch(0.82 0.14 62 / 0.45)",
+                  marginTop: "0.375rem",
                 }}
               >
                 ভূমি সেবা ও কম্পিউটার
               </p>
+              <p
+                style={{
+                  fontFamily: "'Outfit', sans-serif",
+                  fontSize: "0.67rem",
+                  fontWeight: 500,
+                  letterSpacing: "0.05em",
+                  color: "oklch(1 0 0 / 0.50)",
+                  marginTop: "0.125rem",
+                }}
+              >
+                স্মার্ট হিসাব ব্যবস্থাপনা
+              </p>
+              {/* Decorative gold line below title */}
+              <div
+                className="mx-auto mt-2"
+                style={{
+                  width: "3rem",
+                  height: "2px",
+                  background:
+                    "linear-gradient(90deg, transparent, oklch(0.82 0.14 62), transparent)",
+                  borderRadius: "2px",
+                }}
+              />
             </div>
           </div>
 
           {/* Divider */}
-          <div className="w-full h-px pin-divider" />
+          <div
+            className="w-full h-px"
+            style={{
+              background:
+                "linear-gradient(to right, transparent, oklch(1 0 0 / 0.15), transparent)",
+            }}
+          />
 
-          {/* Title */}
+          {/* PIN title section */}
           <AnimatePresence mode="wait">
             <motion.div
               key={title}
@@ -318,17 +367,30 @@ export default function PinLogin({ mode, onUnlock }: PinLoginProps) {
               className="text-center"
             >
               <div className="flex items-center justify-center gap-2 mb-1.5">
-                <ShieldCheck className="h-4 w-4 pin-icon-accent" />
+                <ShieldCheck
+                  className="h-4 w-4"
+                  style={{ color: "oklch(0.88 0.14 62)" }}
+                />
                 <h2
-                  className="pin-text-primary font-bold"
-                  style={{ fontSize: "1rem", letterSpacing: "-0.01em" }}
+                  style={{
+                    fontFamily: "'Outfit', sans-serif",
+                    fontSize: "1.05rem",
+                    fontWeight: 700,
+                    letterSpacing: "0.01em",
+                    color: "white",
+                  }}
                 >
                   {title}
                 </h2>
               </div>
               <p
-                className="pin-text-muted max-w-[240px]"
-                style={{ fontSize: "0.8rem" }}
+                style={{
+                  fontFamily: "'Outfit', sans-serif",
+                  fontSize: "0.82rem",
+                  color: "oklch(1 0 0 / 0.68)",
+                  maxWidth: "240px",
+                  lineHeight: 1.4,
+                }}
               >
                 {subtitle}
               </p>
@@ -356,12 +418,25 @@ export default function PinLogin({ mode, onUnlock }: PinLoginProps) {
                 onChange={(e) => handleChange(idx, e.target.value)}
                 onKeyDown={(e) => handleKeyDown(idx, e)}
                 onFocus={(e) => e.target.select()}
-                className={`pin-digit-box w-14 h-14 text-center text-2xl font-black rounded-xl border-2 transition-all duration-200 outline-none
-                  ${digit ? "pin-digit-filled" : "pin-digit-empty"}
-                `}
-                style={{ letterSpacing: "0.02em" }}
+                className="w-14 h-14 text-center text-2xl font-black rounded-xl border-2 transition-all duration-200 outline-none"
+                style={{
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontWeight: 900,
+                  letterSpacing: "0.02em",
+                  background: digit
+                    ? "oklch(0.82 0.14 62 / 0.12)"
+                    : "oklch(1 0 0 / 0.06)",
+                  borderColor: digit
+                    ? "oklch(0.82 0.14 62 / 0.80)"
+                    : "oklch(1 0 0 / 0.30)",
+                  color: digit ? "oklch(0.88 0.14 62)" : "white",
+                  boxShadow: digit
+                    ? "0 0 14px oklch(0.82 0.14 62 / 0.22)"
+                    : "none",
+                }}
                 aria-label={`Digit ${idx + 1}`}
                 autoComplete="off"
+                data-ocid={`pin.input.${idx + 1}`}
               />
             ))}
           </motion.fieldset>
@@ -374,7 +449,8 @@ export default function PinLogin({ mode, onUnlock }: PinLoginProps) {
                 initial={{ opacity: 0, y: -4 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
-                className="text-xs text-red-500 text-center font-medium -mt-2"
+                className="text-xs text-center font-medium -mt-2"
+                style={{ color: "oklch(0.70 0.20 22)" }}
                 role="alert"
               >
                 {error}
@@ -382,16 +458,35 @@ export default function PinLogin({ mode, onUnlock }: PinLoginProps) {
             )}
           </AnimatePresence>
 
-          {/* Submit button */}
+          {/* Submit button — gold gradient matching the logo image */}
           <Button
             onClick={handleSubmit}
             disabled={currentPin.length < 4}
-            className="w-full pin-submit-btn font-semibold"
+            className="w-full font-bold"
+            style={{
+              background:
+                currentPin.length < 4
+                  ? "oklch(0.82 0.14 62 / 0.35)"
+                  : "linear-gradient(135deg, oklch(0.80 0.16 62), oklch(0.72 0.18 54))",
+              color: "oklch(0.12 0.04 240)",
+              border: "none",
+              fontFamily: "'Outfit', sans-serif",
+              fontSize: "0.95rem",
+              fontWeight: 700,
+              letterSpacing: "0.03em",
+              boxShadow:
+                currentPin.length < 4
+                  ? "none"
+                  : "0 4px 20px oklch(0.82 0.14 62 / 0.35)",
+              opacity: currentPin.length < 4 ? 0.5 : 1,
+              cursor: currentPin.length < 4 ? "not-allowed" : "pointer",
+            }}
+            data-ocid="pin.submit_button"
           >
             {mode === "unlock"
-              ? "Unlock"
+              ? "Unlock / আনলক"
               : setupStep === "enter"
-                ? "Next"
+                ? "Next / পরবর্তী"
                 : "Set PIN & Unlock"}
           </Button>
 
@@ -406,7 +501,10 @@ export default function PinLogin({ mode, onUnlock }: PinLoginProps) {
                     animate={{ opacity: 1, scale: 1 }}
                     className="space-y-2"
                   >
-                    <p className="text-xs text-amber-600 dark:text-amber-400 font-medium max-w-[250px]">
+                    <p
+                      className="text-xs font-medium max-w-[250px]"
+                      style={{ color: "oklch(0.80 0.15 70)" }}
+                    >
                       ⚠️ This will erase ALL your data including customers &amp;
                       transactions. Are you sure?
                     </p>
@@ -414,14 +512,16 @@ export default function PinLogin({ mode, onUnlock }: PinLoginProps) {
                       <button
                         type="button"
                         onClick={() => setForgotWarning(false)}
-                        className="text-xs pin-text-muted hover:pin-text-primary underline transition-colors"
+                        className="text-xs underline transition-colors"
+                        style={{ color: "oklch(1 0 0 / 0.60)" }}
                       >
                         Cancel
                       </button>
                       <button
                         type="button"
                         onClick={handleForgotPin}
-                        className="text-xs text-red-500 hover:text-red-600 font-semibold underline transition-colors flex items-center gap-1"
+                        className="text-xs font-semibold underline transition-colors flex items-center gap-1"
+                        style={{ color: "oklch(0.68 0.20 22)" }}
                       >
                         <RefreshCw className="h-3 w-3" />
                         Erase &amp; Reset
@@ -435,7 +535,8 @@ export default function PinLogin({ mode, onUnlock }: PinLoginProps) {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     onClick={handleForgotPin}
-                    className="text-xs pin-text-muted hover:pin-text-accent underline-offset-2 hover:underline transition-colors"
+                    className="text-xs underline-offset-2 hover:underline transition-colors"
+                    style={{ color: "oklch(1 0 0 / 0.55)" }}
                   >
                     Forgot PIN?
                   </motion.button>
