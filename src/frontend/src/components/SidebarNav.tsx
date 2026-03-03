@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import {
   ArrowLeftRight,
+  BookOpen,
   Download,
   FileText,
   HelpCircle,
@@ -11,6 +12,7 @@ import {
   Settings,
   Sun,
   Users,
+  Wallet,
 } from "lucide-react";
 
 type TabId =
@@ -18,6 +20,8 @@ type TabId =
   | "customers"
   | "transactions"
   | "reports"
+  | "customer-report"
+  | "due-ledger"
   | "settings"
   | "help";
 
@@ -59,9 +63,21 @@ const navItems: {
   },
   {
     id: "reports",
-    labelBn: "কাস্টমার রিপোর্ট",
-    labelEn: "Reports",
+    labelBn: "সামগ্রিক রিপোর্ট",
+    labelEn: "Summary Reports",
     icon: <FileText className="h-5 w-5 flex-shrink-0" />,
+  },
+  {
+    id: "customer-report",
+    labelBn: "কাস্টমার রিপোর্ট",
+    labelEn: "Customer Reports",
+    icon: <BookOpen className="h-5 w-5 flex-shrink-0" />,
+  },
+  {
+    id: "due-ledger",
+    labelBn: "বাকির হিসাব",
+    labelEn: "Due Ledger",
+    icon: <Wallet className="h-5 w-5 flex-shrink-0" />,
   },
   {
     id: "settings",

@@ -54,6 +54,7 @@ import { toast } from "sonner";
 import AddCustomerModal from "./components/AddCustomerModal";
 import BottomNav from "./components/BottomNav";
 import ChangePinModal from "./components/ChangePinModal";
+import CustomerReportPage from "./components/CustomerReportPage";
 import DashboardPage from "./components/DashboardPage";
 import EditCustomerModal from "./components/EditCustomerModal";
 import EditTransactionModal from "./components/EditTransactionModal";
@@ -77,6 +78,8 @@ type TabId =
   | "customers"
   | "transactions"
   | "reports"
+  | "customer-report"
+  | "due-ledger"
   | "settings"
   | "help";
 
@@ -2168,6 +2171,279 @@ export default function App() {
                       </div>
                     )}
                   </div>
+                </CardContent>
+              </Card>
+            </section>
+          )}
+
+          {/* ═══════════════════════════════════════════════════════════
+              TAB 3b — CUSTOMER REPORT (প্রতি কাস্টমারের আলাদা রিপোর্ট)
+          ═══════════════════════════════════════════════════════════ */}
+          {activeTab === "customer-report" && (
+            <CustomerReportPage
+              customers={customers}
+              transactions={transactions}
+            />
+          )}
+
+          {/* ═══════════════════════════════════════════════════════════
+              TAB 4b — DUE LEDGER (বাকির হিসাব)
+          ═══════════════════════════════════════════════════════════ */}
+          {activeTab === "due-ledger" && (
+            <section aria-label="বাকির হিসাব">
+              <div className="mb-6">
+                <h2 className="section-header">বাকির হিসাব</h2>
+                <p className="section-subheader">
+                  Due Ledger — Customer-wise Outstanding Balance
+                </p>
+              </div>
+
+              {/* Summary cards */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-5">
+                <div className="rounded-lg border p-3 text-center shadow-xs bg-amber-500/70 border-amber-400/40">
+                  <div className="flex items-center justify-center gap-1 mb-1">
+                    <Clock className="h-4 w-4 text-white" />
+                  </div>
+                  <p
+                    style={{
+                      fontSize: "0.68rem",
+                      fontWeight: 700,
+                      letterSpacing: "0.05em",
+                      textTransform: "uppercase",
+                      color: "rgba(255,255,255,0.88)",
+                    }}
+                  >
+                    মোট বাকি / Total Due
+                  </p>
+                  <p
+                    className="text-white leading-tight tabular-nums"
+                    style={{
+                      fontSize: "1.25rem",
+                      fontWeight: 900,
+                      letterSpacing: "-0.02em",
+                    }}
+                  >
+                    {totalDue.toLocaleString()} ৳
+                  </p>
+                </div>
+                <div className="rounded-lg border p-3 text-center shadow-xs bg-blue-600/70 border-blue-400/40">
+                  <div className="flex items-center justify-center gap-1 mb-1">
+                    <CheckCircle className="h-4 w-4 text-white" />
+                  </div>
+                  <p
+                    style={{
+                      fontSize: "0.68rem",
+                      fontWeight: 700,
+                      letterSpacing: "0.05em",
+                      textTransform: "uppercase",
+                      color: "rgba(255,255,255,0.88)",
+                    }}
+                  >
+                    মোট পরিশোধ / Total Paid
+                  </p>
+                  <p
+                    className="text-white leading-tight tabular-nums"
+                    style={{
+                      fontSize: "1.25rem",
+                      fontWeight: 900,
+                      letterSpacing: "-0.02em",
+                    }}
+                  >
+                    {totalPaid.toLocaleString()} ৳
+                  </p>
+                </div>
+                <div
+                  className={`col-span-2 sm:col-span-1 rounded-lg border p-3 text-center shadow-xs ${(totalDue - totalPaid) > 0 ? "bg-red-600/70 border-red-400/40" : "bg-emerald-600/70 border-emerald-400/40"}`}
+                >
+                  <div className="flex items-center justify-center gap-1 mb-1">
+                    <TrendingDown className="h-4 w-4 text-white" />
+                  </div>
+                  <p
+                    style={{
+                      fontSize: "0.68rem",
+                      fontWeight: 700,
+                      letterSpacing: "0.05em",
+                      textTransform: "uppercase",
+                      color: "rgba(255,255,255,0.88)",
+                    }}
+                  >
+                    নিট বাকি / Net Outstanding
+                  </p>
+                  <p
+                    className="text-white leading-tight tabular-nums"
+                    style={{
+                      fontSize: "1.25rem",
+                      fontWeight: 900,
+                      letterSpacing: "-0.02em",
+                    }}
+                  >
+                    {(totalDue - totalPaid).toLocaleString()} ৳
+                  </p>
+                </div>
+              </div>
+
+              {/* Due Ledger Table */}
+              <Card className="shadow-sm">
+                <CardHeader className="pb-3">
+                  <CardTitle
+                    className="flex items-center gap-2"
+                    style={{
+                      fontSize: "0.9rem",
+                      fontWeight: 700,
+                      letterSpacing: "-0.01em",
+                    }}
+                  >
+                    <Clock
+                      className="h-4 w-4"
+                      style={{ color: "oklch(0.88 0.14 62)" }}
+                    />
+                    কাস্টমার অনুযায়ী বাকির হিসাব / Customer-wise Due Ledger
+                  </CardTitle>
+                  <p className="text-xs text-muted-foreground">
+                    ক্রমিক নম্বর অনুযায়ী সাজানো / Sorted by serial number
+                  </p>
+                </CardHeader>
+                <CardContent>
+                  {customers.length === 0 ? (
+                    <div className="py-12 text-center text-muted-foreground text-sm">
+                      কোনো কাস্টমার নেই। কাস্টমার প্রোফাইল মেনুতে যোগ করুন। / No customers
+                      yet.
+                    </div>
+                  ) : (
+                    <div className="overflow-x-auto rounded-md border border-border">
+                      <table className="w-full text-sm">
+                        <thead>
+                          <tr
+                            className="border-b border-border"
+                            style={{ background: "oklch(0 0 0 / 0.30)" }}
+                          >
+                            <th className="table-header-cell text-center w-10">
+                              #
+                            </th>
+                            <th className="table-header-cell text-left">
+                              কাস্টমার / Customer
+                            </th>
+                            <th className="table-header-cell text-left hidden md:table-cell">
+                              ফোন / Phone
+                            </th>
+                            <th className="table-header-cell text-right">
+                              বাকি / Due ৳
+                            </th>
+                            <th className="table-header-cell text-right">
+                              পরিশোধ / Paid ৳
+                            </th>
+                            <th className="table-header-cell text-right">
+                              নিট / Net ৳
+                            </th>
+                            <th className="table-header-cell text-center w-20">
+                              অবস্থা
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {customerReport.map((row, idx) => {
+                            const net = row.due - row.paid;
+                            const isPaid = net <= 0;
+                            return (
+                              <tr
+                                // biome-ignore lint/suspicious/noArrayIndexKey: customer indices are stable references
+                                key={`due-row-${idx}`}
+                                data-ocid={`due_ledger.table.row.${idx + 1}`}
+                                onClick={() => drillDown(row.customer.name)}
+                                onKeyDown={(e) => {
+                                  if (e.key === "Enter" || e.key === " ")
+                                    drillDown(row.customer.name);
+                                }}
+                                tabIndex={0}
+                                className="border-b border-border/60 hover:bg-primary/5 cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                              >
+                                <td
+                                  className="px-3 py-2.5 text-center"
+                                  style={{
+                                    fontSize: "0.8rem",
+                                    opacity: 0.7,
+                                    fontWeight: 700,
+                                  }}
+                                >
+                                  {idx + 1}
+                                </td>
+                                <td
+                                  className="px-3 py-2.5 font-semibold"
+                                  style={{ fontSize: "0.875rem" }}
+                                >
+                                  {row.customer.name}
+                                </td>
+                                <td
+                                  className="px-3 py-2.5 hidden md:table-cell"
+                                  style={{
+                                    opacity: 0.78,
+                                    fontSize: "0.8125rem",
+                                  }}
+                                >
+                                  {row.customer.phone}
+                                </td>
+                                <td className="px-3 py-2.5 text-right amount-value text-amber-300">
+                                  {row.due.toLocaleString()}
+                                </td>
+                                <td className="px-3 py-2.5 text-right amount-value text-blue-300">
+                                  {row.paid.toLocaleString()}
+                                </td>
+                                <td
+                                  className={`px-3 py-2.5 text-right amount-value font-bold ${net > 0 ? "text-red-300" : "text-emerald-300"}`}
+                                >
+                                  {net > 0
+                                    ? `${net.toLocaleString()}`
+                                    : `${Math.abs(net).toLocaleString()}`}
+                                </td>
+                                <td className="px-3 py-2.5 text-center">
+                                  <span
+                                    className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold ${isPaid ? "bg-emerald-900/50 text-emerald-300" : "bg-red-900/50 text-red-300"}`}
+                                  >
+                                    {isPaid ? "পরিশোধিত" : "বাকি আছে"}
+                                  </span>
+                                </td>
+                              </tr>
+                            );
+                          })}
+                        </tbody>
+                        {customerReport.length > 0 && (
+                          <tfoot>
+                            <tr
+                              className="border-t-2 border-border"
+                              style={{ background: "oklch(0 0 0 / 0.20)" }}
+                            >
+                              <td
+                                colSpan={3}
+                                className="px-3 py-2.5 text-xs font-bold text-muted-foreground uppercase tracking-wide"
+                              >
+                                মোট / Total ({customers.length}জন)
+                              </td>
+                              <td className="px-3 py-2.5 text-right amount-value text-amber-300 font-bold">
+                                {totalDue.toLocaleString()}
+                              </td>
+                              <td className="px-3 py-2.5 text-right amount-value text-blue-300 font-bold">
+                                {totalPaid.toLocaleString()}
+                              </td>
+                              <td
+                                className={`px-3 py-2.5 text-right amount-value font-bold ${(totalDue - totalPaid) > 0 ? "text-red-300" : "text-emerald-300"}`}
+                              >
+                                {(totalDue - totalPaid).toLocaleString()}
+                              </td>
+                              <td className="px-3 py-2.5 text-center">
+                                <span
+                                  className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold ${(totalDue - totalPaid) <= 0 ? "bg-emerald-900/50 text-emerald-300" : "bg-red-900/50 text-red-300"}`}
+                                >
+                                  {totalDue - totalPaid <= 0
+                                    ? "সব পরিশোধিত"
+                                    : `${customerReport.filter((r) => r.due > r.paid).length}জন বাকি`}
+                                </span>
+                              </td>
+                            </tr>
+                          </tfoot>
+                        )}
+                      </table>
+                    </div>
+                  )}
                 </CardContent>
               </Card>
             </section>

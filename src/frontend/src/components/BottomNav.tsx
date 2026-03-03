@@ -1,10 +1,11 @@
 import {
   ArrowLeftRight,
+  BookOpen,
   FileText,
-  HelpCircle,
   LayoutDashboard,
   Settings,
   Users,
+  Wallet,
 } from "lucide-react";
 
 type TabId =
@@ -12,6 +13,8 @@ type TabId =
   | "customers"
   | "transactions"
   | "reports"
+  | "customer-report"
+  | "due-ledger"
   | "settings"
   | "help";
 
@@ -47,9 +50,21 @@ const tabs: {
   },
   {
     id: "reports",
-    labelBn: "রিপোর্ট",
-    labelEn: "Reports",
+    labelBn: "সামগ্রিক",
+    labelEn: "Summary",
     icon: <FileText className="h-5 w-5" />,
+  },
+  {
+    id: "customer-report",
+    labelBn: "কাস্টমার",
+    labelEn: "Cust. Report",
+    icon: <BookOpen className="h-5 w-5" />,
+  },
+  {
+    id: "due-ledger",
+    labelBn: "বাকি",
+    labelEn: "Due",
+    icon: <Wallet className="h-5 w-5" />,
   },
   {
     id: "settings",
