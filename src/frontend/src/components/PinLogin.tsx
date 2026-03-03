@@ -211,7 +211,7 @@ export default function PinLogin({ mode, onUnlock }: PinLoginProps) {
       className={`fixed inset-0 z-[100] flex flex-col items-center justify-center${isDark ? " dark" : ""}`}
       style={{
         backgroundImage:
-          "url('/assets/uploads/Gemini_Generated_Image_4k8lxm4k8lxm4k8l-1.png')",
+          "url('/assets/uploads/38dbe6b3-fd90-4c94-9ec9-2088d6be73a5-1.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
@@ -231,17 +231,76 @@ export default function PinLogin({ mode, onUnlock }: PinLoginProps) {
         className="relative z-10 w-full max-w-sm mx-4"
       >
         {/* Card */}
-        <div className="pin-card rounded-2xl shadow-2xl p-8 flex flex-col items-center gap-6 backdrop-blur-md bg-white/85 dark:bg-gray-900/80">
+        <div className="pin-card rounded-2xl shadow-2xl p-8 flex flex-col items-center gap-6 backdrop-blur-md">
           {/* Brand */}
-          <div className="flex flex-col items-center gap-2">
-            <div className="pin-icon-ring w-16 h-16 rounded-full flex items-center justify-center">
-              <span className="text-3xl select-none">💰</span>
+          <div className="flex flex-col items-center gap-3">
+            <div
+              className="pin-icon-ring w-18 h-18 rounded-full flex items-center justify-center"
+              style={{ width: "5rem", height: "5rem" }}
+            >
+              <img
+                src="/assets/uploads/logo-1.jpg"
+                alt="Logo"
+                className="w-14 h-14 rounded-full object-contain"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).style.display = "none";
+                  (
+                    e.target as HTMLImageElement
+                  ).nextElementSibling?.removeAttribute("style");
+                }}
+              />
+              <span className="text-3xl select-none hidden">💰</span>
             </div>
-            <div className="text-center">
-              <h1 className="font-bold text-xl tracking-tight pin-text-primary">
-                Atrai Online Bhumisheba And MA Computer
+            <div className="text-center space-y-1.5">
+              <h1
+                className="pin-text-primary text-shadow-md"
+                style={{
+                  fontFamily: "'Playfair Display', Georgia, serif",
+                  fontSize: "1.35rem",
+                  fontWeight: 800,
+                  letterSpacing: "-0.01em",
+                  lineHeight: 1.2,
+                }}
+              >
+                Atrai Online Bhumisheba
               </h1>
-              <p className="text-xs pin-text-muted">ভূমি সেবা ও কম্পিউটার</p>
+              <div
+                className="pin-text-primary text-shadow-md"
+                style={{
+                  fontFamily: "'Playfair Display', Georgia, serif",
+                  fontSize: "1.35rem",
+                  fontWeight: 800,
+                  letterSpacing: "-0.01em",
+                  lineHeight: 1.2,
+                }}
+              >
+                &amp; MA Computer
+              </div>
+              {/* Bengali subtitle */}
+              <p
+                style={{
+                  fontFamily: "'Outfit', sans-serif",
+                  fontSize: "0.75rem",
+                  fontWeight: 600,
+                  letterSpacing: "0.05em",
+                  color: "oklch(0.88 0.14 62)",
+                  textShadow: "0 0 12px oklch(0.82 0.15 62 / 0.40)",
+                }}
+              >
+                স্মার্ট হিসাব ব্যবস্থাপনা
+              </p>
+              <p
+                style={{
+                  fontFamily: "'Outfit', sans-serif",
+                  fontSize: "0.65rem",
+                  fontWeight: 500,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  color: "oklch(1 0 0 / 0.55)",
+                }}
+              >
+                ভূমি সেবা ও কম্পিউটার
+              </p>
             </div>
           </div>
 
@@ -258,13 +317,21 @@ export default function PinLogin({ mode, onUnlock }: PinLoginProps) {
               transition={{ duration: 0.22 }}
               className="text-center"
             >
-              <div className="flex items-center justify-center gap-2 mb-1">
+              <div className="flex items-center justify-center gap-2 mb-1.5">
                 <ShieldCheck className="h-4 w-4 pin-icon-accent" />
-                <h2 className="font-semibold text-base pin-text-primary">
+                <h2
+                  className="pin-text-primary font-bold"
+                  style={{ fontSize: "1rem", letterSpacing: "-0.01em" }}
+                >
                   {title}
                 </h2>
               </div>
-              <p className="text-xs pin-text-muted max-w-[240px]">{subtitle}</p>
+              <p
+                className="pin-text-muted max-w-[240px]"
+                style={{ fontSize: "0.8rem" }}
+              >
+                {subtitle}
+              </p>
             </motion.div>
           </AnimatePresence>
 
@@ -289,10 +356,10 @@ export default function PinLogin({ mode, onUnlock }: PinLoginProps) {
                 onChange={(e) => handleChange(idx, e.target.value)}
                 onKeyDown={(e) => handleKeyDown(idx, e)}
                 onFocus={(e) => e.target.select()}
-                className={`pin-digit-box w-14 h-14 text-center text-2xl font-bold rounded-xl border-2 transition-all duration-150 outline-none bg-transparent
+                className={`pin-digit-box w-14 h-14 text-center text-2xl font-black rounded-xl border-2 transition-all duration-200 outline-none
                   ${digit ? "pin-digit-filled" : "pin-digit-empty"}
-                  focus:pin-digit-focus
                 `}
+                style={{ letterSpacing: "0.02em" }}
                 aria-label={`Digit ${idx + 1}`}
                 autoComplete="off"
               />

@@ -95,11 +95,10 @@ interface TransactionWithIndex {
 // ─── Type Badge Config ─────────────────────────────────────────────────────────
 
 const typeBadgeVariant: Record<TransactionType, string> = {
-  Income:
-    "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300",
-  Expense: "bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-300",
-  Due: "bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300",
-  Paid: "bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-300",
+  Income: "bg-emerald-900/50 text-emerald-300",
+  Expense: "bg-red-900/50 text-red-300",
+  Due: "bg-amber-900/50 text-amber-300",
+  Paid: "bg-blue-900/50 text-blue-300",
 };
 
 // ─── Avatar Colors ─────────────────────────────────────────────────────────────
@@ -762,7 +761,7 @@ export default function App() {
       className="min-h-screen font-sans flex flex-col"
       style={{
         backgroundImage:
-          "url('/assets/uploads/Gemini_Generated_Image_4k8lxm4k8lxm4k8l-1.png')",
+          "url('/assets/uploads/dfe62c06-78a6-4a41-bddc-1e867d7af519-2.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
@@ -920,13 +919,31 @@ export default function App() {
             <img
               src="/assets/uploads/logo-1.jpg"
               alt="ভূমি সেবা"
-              className="h-10 w-10 object-contain rounded-lg"
+              className="h-9 w-9 object-contain rounded-lg"
+              style={{ boxShadow: "0 0 12px oklch(0.82 0.15 62 / 0.25)" }}
             />
             <div>
-              <h1 className="text-white font-bold text-base leading-none tracking-tight">
-                Atrai Online Bhumisheba And MA Computer
+              <h1
+                className="text-white font-black leading-none"
+                style={{
+                  fontSize: "0.9rem",
+                  letterSpacing: "-0.02em",
+                  textShadow: "0 1px 3px rgba(0,0,0,0.5)",
+                }}
+              >
+                Atrai Online Bhumisheba
               </h1>
-              <p className="text-white/60 text-xs">ভূমি সেবা ও কম্পিউটার</p>
+              <p
+                style={{
+                  fontSize: "0.65rem",
+                  fontWeight: 600,
+                  letterSpacing: "0.04em",
+                  textTransform: "uppercase",
+                  color: "oklch(0.88 0.14 62)",
+                }}
+              >
+                ভূমি সেবা ও কম্পিউটার
+              </p>
             </div>
           </div>
           <div className="flex items-center gap-1">
@@ -964,8 +981,6 @@ export default function App() {
           </div>
         </div>
       </header>
-
-      {/* ── Body with sidebar ── */}
       <div className="flex flex-1">
         {/* Desktop Sidebar */}
         <SidebarNav
@@ -1036,11 +1051,9 @@ export default function App() {
               {/* Header row */}
               <div className="flex items-center justify-between mb-5">
                 <div>
-                  <h2 className="font-bold text-foreground text-xl leading-tight">
-                    কাস্টমার প্রোফাইল
-                  </h2>
-                  <p className="text-xs text-muted-foreground mt-0.5">
-                    Customer Profiles — {customers.length}জন কাস্টমার /{" "}
+                  <h2 className="section-header">কাস্টমার প্রোফাইল</h2>
+                  <p className="section-subheader">
+                    Customer Profiles — {customers.length}জন /{" "}
                     {customers.length} customers
                   </p>
                 </div>
@@ -1175,7 +1188,14 @@ export default function App() {
                                   {initial}
                                 </div>
                                 <div className="min-w-0">
-                                  <h3 className="font-bold text-foreground text-sm leading-tight">
+                                  <h3
+                                    className="font-bold text-white leading-tight"
+                                    style={{
+                                      fontSize: "1rem",
+                                      letterSpacing: "-0.01em",
+                                      textShadow: "0 1px 3px rgba(0,0,0,0.4)",
+                                    }}
+                                  >
                                     {customer.name}
                                   </h3>
                                   <span
@@ -1212,34 +1232,102 @@ export default function App() {
                               {/* MIDDLE: Stats grid */}
                               <div className="flex-1 grid grid-cols-4 gap-1.5">
                                 <div className="text-center py-2 px-1.5 rounded-lg bg-emerald-600/60 border border-emerald-400/30">
-                                  <p className="text-[9px] text-white/80 font-medium uppercase tracking-wide leading-none mb-1">
+                                  <p
+                                    style={{
+                                      fontSize: "0.6rem",
+                                      fontWeight: 700,
+                                      letterSpacing: "0.06em",
+                                      textTransform: "uppercase",
+                                      color: "rgba(255,255,255,0.88)",
+                                      lineHeight: 1,
+                                      marginBottom: "0.25rem",
+                                    }}
+                                  >
                                     আয়
                                   </p>
-                                  <p className="text-xs font-bold text-white tabular-nums">
+                                  <p
+                                    className="text-white tabular-nums"
+                                    style={{
+                                      fontSize: "0.8125rem",
+                                      fontWeight: 900,
+                                      letterSpacing: "-0.01em",
+                                    }}
+                                  >
                                     {fmtAmt(report?.income ?? 0)}
                                   </p>
                                 </div>
                                 <div className="text-center py-2 px-1.5 rounded-lg bg-red-600/60 border border-red-400/30">
-                                  <p className="text-[9px] text-white/80 font-medium uppercase tracking-wide leading-none mb-1">
+                                  <p
+                                    style={{
+                                      fontSize: "0.6rem",
+                                      fontWeight: 700,
+                                      letterSpacing: "0.06em",
+                                      textTransform: "uppercase",
+                                      color: "rgba(255,255,255,0.88)",
+                                      lineHeight: 1,
+                                      marginBottom: "0.25rem",
+                                    }}
+                                  >
                                     ব্যয়
                                   </p>
-                                  <p className="text-xs font-bold text-white tabular-nums">
+                                  <p
+                                    className="text-white tabular-nums"
+                                    style={{
+                                      fontSize: "0.8125rem",
+                                      fontWeight: 900,
+                                      letterSpacing: "-0.01em",
+                                    }}
+                                  >
                                     {fmtAmt(report?.expense ?? 0)}
                                   </p>
                                 </div>
                                 <div className="text-center py-2 px-1.5 rounded-lg bg-amber-500/60 border border-amber-400/30">
-                                  <p className="text-[9px] text-white/80 font-medium uppercase tracking-wide leading-none mb-1">
+                                  <p
+                                    style={{
+                                      fontSize: "0.6rem",
+                                      fontWeight: 700,
+                                      letterSpacing: "0.06em",
+                                      textTransform: "uppercase",
+                                      color: "rgba(255,255,255,0.88)",
+                                      lineHeight: 1,
+                                      marginBottom: "0.25rem",
+                                    }}
+                                  >
                                     বাকি
                                   </p>
-                                  <p className="text-xs font-bold text-white tabular-nums">
+                                  <p
+                                    className="text-white tabular-nums"
+                                    style={{
+                                      fontSize: "0.8125rem",
+                                      fontWeight: 900,
+                                      letterSpacing: "-0.01em",
+                                    }}
+                                  >
                                     {fmtAmt(report?.due ?? 0)}
                                   </p>
                                 </div>
                                 <div className="text-center py-2 px-1.5 rounded-lg bg-blue-600/60 border border-blue-400/30">
-                                  <p className="text-[9px] text-white/80 font-medium uppercase tracking-wide leading-none mb-1">
+                                  <p
+                                    style={{
+                                      fontSize: "0.6rem",
+                                      fontWeight: 700,
+                                      letterSpacing: "0.06em",
+                                      textTransform: "uppercase",
+                                      color: "rgba(255,255,255,0.88)",
+                                      lineHeight: 1,
+                                      marginBottom: "0.25rem",
+                                    }}
+                                  >
                                     পরিশোধ
                                   </p>
-                                  <p className="text-xs font-bold text-white tabular-nums">
+                                  <p
+                                    className="text-white tabular-nums"
+                                    style={{
+                                      fontSize: "0.8125rem",
+                                      fontWeight: 900,
+                                      letterSpacing: "-0.01em",
+                                    }}
+                                  >
                                     {fmtAmt(report?.paid ?? 0)}
                                   </p>
                                 </div>
@@ -1414,8 +1502,18 @@ export default function App() {
               {/* Add Transaction Form */}
               <Card className="shadow-sm mb-4">
                 <CardHeader className="pb-3">
-                  <CardTitle className="flex items-center gap-2 text-base">
-                    <PlusCircle className="h-4 w-4 text-primary" />
+                  <CardTitle
+                    className="flex items-center gap-2"
+                    style={{
+                      fontSize: "0.9rem",
+                      fontWeight: 700,
+                      letterSpacing: "-0.01em",
+                    }}
+                  >
+                    <PlusCircle
+                      className="h-4 w-4"
+                      style={{ color: "oklch(0.88 0.14 62)" }}
+                    />
                     লেনদেন যোগ করুন / Add Transaction
                   </CardTitle>
                 </CardHeader>
@@ -1506,8 +1604,18 @@ export default function App() {
               {/* Transaction List */}
               <Card className="shadow-sm" id="transactionTable">
                 <CardHeader className="pb-3">
-                  <CardTitle className="flex items-center gap-2 text-base">
-                    <FileText className="h-4 w-4 text-primary" />
+                  <CardTitle
+                    className="flex items-center gap-2"
+                    style={{
+                      fontSize: "0.9rem",
+                      fontWeight: 700,
+                      letterSpacing: "-0.01em",
+                    }}
+                  >
+                    <FileText
+                      className="h-4 w-4"
+                      style={{ color: "oklch(0.88 0.14 62)" }}
+                    />
                     লেনদেন তালিকা / Transaction List
                   </CardTitle>
                 </CardHeader>
@@ -1552,26 +1660,29 @@ export default function App() {
                   <div className="overflow-x-auto rounded-md border border-border">
                     <table className="w-full text-sm">
                       <thead>
-                        <tr className="bg-muted/60 border-b border-border">
-                          <th className="px-3 py-2 text-left font-semibold text-muted-foreground whitespace-nowrap">
+                        <tr
+                          className="border-b border-border"
+                          style={{ background: "oklch(0 0 0 / 0.30)" }}
+                        >
+                          <th className="table-header-cell text-left whitespace-nowrap">
                             তারিখ / Date
                           </th>
-                          <th className="px-3 py-2 text-left font-semibold text-muted-foreground">
+                          <th className="table-header-cell text-left">
                             ধরন / Type
                           </th>
-                          <th className="px-3 py-2 text-left font-semibold text-muted-foreground">
+                          <th className="table-header-cell text-left">
                             কাস্টমার / Customer
                           </th>
-                          <th className="px-3 py-2 text-left font-semibold text-muted-foreground hidden md:table-cell">
+                          <th className="table-header-cell text-left hidden md:table-cell">
                             ফোন / Phone
                           </th>
-                          <th className="px-3 py-2 text-left font-semibold text-muted-foreground hidden lg:table-cell">
+                          <th className="table-header-cell text-left hidden lg:table-cell">
                             ঠিকানা / Address
                           </th>
-                          <th className="px-3 py-2 text-right font-semibold text-muted-foreground">
+                          <th className="table-header-cell text-right">
                             পরিমাণ / Amount
                           </th>
-                          <th className="px-3 py-2 text-center font-semibold text-muted-foreground w-10">
+                          <th className="table-header-cell text-center w-10">
                             অপশন
                           </th>
                         </tr>
@@ -1598,27 +1709,54 @@ export default function App() {
                                   key={originalIndex}
                                   className="border-b border-border/60 hover:bg-muted/40 transition-colors"
                                 >
-                                  <td className="px-3 py-2 whitespace-nowrap text-muted-foreground">
+                                  <td
+                                    className="px-3 py-2.5 whitespace-nowrap"
+                                    style={{
+                                      fontSize: "0.75rem",
+                                      opacity: 0.78,
+                                      fontFamily: "monospace",
+                                      letterSpacing: "0.02em",
+                                    }}
+                                  >
                                     {item.date}
                                   </td>
-                                  <td className="px-3 py-2">
+                                  <td className="px-3 py-2.5">
                                     <span
-                                      className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold ${typeBadgeVariant[item.type]}`}
+                                      className={`inline-flex items-center px-2 py-0.5 rounded-full font-bold ${typeBadgeVariant[item.type]}`}
+                                      style={{
+                                        fontSize: "0.7rem",
+                                        letterSpacing: "0.04em",
+                                      }}
                                     >
                                       {item.type}
                                     </span>
                                   </td>
-                                  <td className="px-3 py-2 font-medium">
+                                  <td
+                                    className="px-3 py-2.5 font-semibold"
+                                    style={{ fontSize: "0.875rem" }}
+                                  >
                                     {cust.name}
                                   </td>
-                                  <td className="px-3 py-2 text-muted-foreground hidden md:table-cell">
+                                  <td
+                                    className="px-3 py-2.5 hidden md:table-cell"
+                                    style={{
+                                      opacity: 0.78,
+                                      fontSize: "0.8125rem",
+                                    }}
+                                  >
                                     {cust.phone}
                                   </td>
-                                  <td className="px-3 py-2 text-muted-foreground hidden lg:table-cell">
+                                  <td
+                                    className="px-3 py-2.5 hidden lg:table-cell"
+                                    style={{
+                                      opacity: 0.78,
+                                      fontSize: "0.8125rem",
+                                    }}
+                                  >
                                     {cust.address}
                                   </td>
-                                  <td className="px-3 py-2 text-right font-semibold tabular-nums">
-                                    {item.amount.toLocaleString()}
+                                  <td className="px-3 py-2.5 text-right amount-value">
+                                    {item.amount.toLocaleString()} ৳
                                   </td>
                                   <td className="px-3 py-2 text-center">
                                     <DropdownMenu>
@@ -1687,12 +1825,10 @@ export default function App() {
           {activeTab === "reports" && (
             <section aria-label="রিপোর্ট">
               {/* Section title */}
-              <div className="mb-5">
-                <h2 className="font-bold text-foreground text-xl leading-tight mb-0.5">
-                  কাস্টমার রিপোর্ট
-                </h2>
-                <p className="text-xs text-muted-foreground">
-                  Customer Reports & Analytics
+              <div className="mb-6">
+                <h2 className="section-header">কাস্টমার রিপোর্ট</h2>
+                <p className="section-subheader">
+                  Customer Reports &amp; Analytics
                 </p>
               </div>
 
@@ -1736,10 +1872,25 @@ export default function App() {
                   <div className="flex items-center justify-center gap-1 mb-1">
                     <BarChart3 className="h-4 w-4 text-white" />
                   </div>
-                  <p className="text-xs text-white/80 font-medium">
+                  <p
+                    style={{
+                      fontSize: "0.68rem",
+                      fontWeight: 700,
+                      letterSpacing: "0.05em",
+                      textTransform: "uppercase",
+                      color: "rgba(255,255,255,0.88)",
+                    }}
+                  >
                     লাভ / Profit
                   </p>
-                  <p className="font-bold text-lg leading-tight tabular-nums text-white">
+                  <p
+                    className="text-white leading-tight tabular-nums"
+                    style={{
+                      fontSize: "1.25rem",
+                      fontWeight: 900,
+                      letterSpacing: "-0.02em",
+                    }}
+                  >
                     {profit.toLocaleString()}
                   </p>
                 </div>
@@ -1748,8 +1899,18 @@ export default function App() {
               {/* Customer Report Table */}
               <Card className="shadow-sm mb-5">
                 <CardHeader className="pb-3">
-                  <CardTitle className="flex items-center gap-2 text-base">
-                    <FileText className="h-4 w-4 text-primary" />
+                  <CardTitle
+                    className="flex items-center gap-2"
+                    style={{
+                      fontSize: "0.9rem",
+                      fontWeight: 700,
+                      letterSpacing: "-0.01em",
+                    }}
+                  >
+                    <FileText
+                      className="h-4 w-4"
+                      style={{ color: "oklch(0.88 0.14 62)" }}
+                    />
                     কাস্টমার রিপোর্ট / Customer Report
                   </CardTitle>
                   <p className="text-xs text-muted-foreground">
@@ -1761,31 +1922,24 @@ export default function App() {
                   <div className="overflow-x-auto rounded-md border border-border">
                     <table className="w-full text-sm">
                       <thead>
-                        <tr className="bg-muted/60 border-b border-border">
-                          <th className="px-3 py-2 text-left font-semibold text-muted-foreground">
-                            কাস্টমার
-                          </th>
-                          <th className="px-3 py-2 text-left font-semibold text-muted-foreground hidden md:table-cell">
+                        <tr
+                          className="border-b border-border"
+                          style={{ background: "oklch(0 0 0 / 0.30)" }}
+                        >
+                          <th className="table-header-cell text-left">কাস্টমার</th>
+                          <th className="table-header-cell text-left hidden md:table-cell">
                             ফোন
                           </th>
-                          <th className="px-3 py-2 text-left font-semibold text-muted-foreground hidden lg:table-cell">
+                          <th className="table-header-cell text-left hidden lg:table-cell">
                             ঠিকানা
                           </th>
-                          <th className="px-3 py-2 text-right font-semibold text-muted-foreground">
-                            আয়
-                          </th>
-                          <th className="px-3 py-2 text-right font-semibold text-muted-foreground">
-                            ব্যয়
-                          </th>
-                          <th className="px-3 py-2 text-right font-semibold text-muted-foreground">
-                            বাকি
-                          </th>
-                          <th className="px-3 py-2 text-right font-semibold text-muted-foreground">
+                          <th className="table-header-cell text-right">আয়</th>
+                          <th className="table-header-cell text-right">ব্যয়</th>
+                          <th className="table-header-cell text-right">বাকি</th>
+                          <th className="table-header-cell text-right">
                             পরিশোধ
                           </th>
-                          <th className="px-3 py-2 text-right font-semibold text-muted-foreground">
-                            লাভ
-                          </th>
+                          <th className="table-header-cell text-right">লাভ</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -1811,29 +1965,38 @@ export default function App() {
                               tabIndex={0}
                               className="border-b border-border/60 hover:bg-primary/5 cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                             >
-                              <td className="px-3 py-2 font-medium">
+                              <td
+                                className="px-3 py-2.5 font-semibold"
+                                style={{ fontSize: "0.875rem" }}
+                              >
                                 {row.customer.name}
                               </td>
-                              <td className="px-3 py-2 text-muted-foreground hidden md:table-cell">
+                              <td
+                                className="px-3 py-2.5 hidden md:table-cell"
+                                style={{ opacity: 0.78, fontSize: "0.8125rem" }}
+                              >
                                 {row.customer.phone}
                               </td>
-                              <td className="px-3 py-2 text-muted-foreground hidden lg:table-cell">
+                              <td
+                                className="px-3 py-2.5 hidden lg:table-cell"
+                                style={{ opacity: 0.78, fontSize: "0.8125rem" }}
+                              >
                                 {row.customer.address}
                               </td>
-                              <td className="px-3 py-2 text-right font-semibold text-emerald-300 tabular-nums">
+                              <td className="px-3 py-2.5 text-right amount-value text-emerald-300">
                                 {row.income.toLocaleString()}
                               </td>
-                              <td className="px-3 py-2 text-right font-semibold text-red-300 tabular-nums">
+                              <td className="px-3 py-2.5 text-right amount-value text-red-300">
                                 {row.expense.toLocaleString()}
                               </td>
-                              <td className="px-3 py-2 text-right font-semibold text-amber-300 tabular-nums">
+                              <td className="px-3 py-2.5 text-right amount-value text-amber-300">
                                 {row.due.toLocaleString()}
                               </td>
-                              <td className="px-3 py-2 text-right font-semibold text-blue-300 tabular-nums">
+                              <td className="px-3 py-2.5 text-right amount-value text-blue-300">
                                 {row.paid.toLocaleString()}
                               </td>
                               <td
-                                className={`px-3 py-2 text-right font-bold tabular-nums ${
+                                className={`px-3 py-2.5 text-right amount-value ${
                                   row.profit >= 0
                                     ? "text-emerald-300"
                                     : "text-red-300"
@@ -1853,15 +2016,34 @@ export default function App() {
               {/* Charts Section */}
               <Card className="shadow-sm">
                 <CardHeader className="pb-3">
-                  <CardTitle className="flex items-center gap-2 text-base">
-                    <BarChart3 className="h-4 w-4 text-primary" />
-                    চার্ট ও বিশ্লেষণ / Charts & Analytics
+                  <CardTitle
+                    className="flex items-center gap-2"
+                    style={{
+                      fontSize: "0.9rem",
+                      fontWeight: 700,
+                      letterSpacing: "-0.01em",
+                    }}
+                  >
+                    <BarChart3
+                      className="h-4 w-4"
+                      style={{ color: "oklch(0.88 0.14 62)" }}
+                    />
+                    চার্ট ও বিশ্লেষণ / Charts &amp; Analytics
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-8">
                   {/* Bar Chart */}
                   <div>
-                    <h3 className="text-sm font-semibold text-muted-foreground mb-3">
+                    <h3
+                      style={{
+                        fontSize: "0.8125rem",
+                        fontWeight: 700,
+                        letterSpacing: "0.03em",
+                        textTransform: "uppercase",
+                        color: "rgba(255,255,255,0.78)",
+                        marginBottom: "0.75rem",
+                      }}
+                    >
                       সামগ্রিক বার চার্ট / Overview Bar Chart
                     </h3>
                     <div className="h-64">
@@ -1914,7 +2096,16 @@ export default function App() {
 
                   {/* Pie Chart */}
                   <div>
-                    <h3 className="text-sm font-semibold text-muted-foreground mb-1">
+                    <h3
+                      style={{
+                        fontSize: "0.8125rem",
+                        fontWeight: 700,
+                        letterSpacing: "0.03em",
+                        textTransform: "uppercase",
+                        color: "rgba(255,255,255,0.78)",
+                        marginBottom: "0.25rem",
+                      }}
+                    >
                       কাস্টমার অনুযায়ী আয় বিতরণ / Customer-wise Income Distribution
                     </h3>
                     <p className="text-xs text-muted-foreground mb-3">
@@ -2025,8 +2216,6 @@ export default function App() {
           </footer>
         </main>
       </div>
-
-      {/* ── Mobile Bottom Navigation ── */}
       <BottomNav
         activeTab={activeTab}
         onTabChange={setActiveTab}
@@ -2058,9 +2247,24 @@ function SummaryCard({
       className={`rounded-lg border p-3 text-center shadow-xs transition-colors ${bgClass}`}
     >
       <div className="flex items-center justify-center gap-1 mb-1">{icon}</div>
-      <p className="text-xs text-white/80 font-medium">{label}</p>
       <p
-        className={`font-bold text-lg leading-tight tabular-nums ${colorClass}`}
+        style={{
+          fontSize: "0.68rem",
+          fontWeight: 700,
+          letterSpacing: "0.05em",
+          textTransform: "uppercase",
+          color: "rgba(255,255,255,0.88)",
+        }}
+      >
+        {label}
+      </p>
+      <p
+        className={`leading-tight tabular-nums ${colorClass}`}
+        style={{
+          fontSize: "1.25rem",
+          fontWeight: 900,
+          letterSpacing: "-0.02em",
+        }}
       >
         {value.toLocaleString()}
       </p>

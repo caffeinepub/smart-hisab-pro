@@ -16,7 +16,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['"Plus Jakarta Sans"', '"Cabinet Grotesk"', 'system-ui', 'sans-serif'],
+        sans: ['Outfit', '"Segoe UI"', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['"Playfair Display"', 'Georgia', 'serif'],
+        mono: ['"JetBrains Mono"', 'Consolas', 'monospace'],
       },
       colors: {
         border: "oklch(var(--border))",
@@ -58,6 +60,11 @@ export default {
           3: "oklch(var(--chart-3))",
           4: "oklch(var(--chart-4))",
           5: "oklch(var(--chart-5))",
+        },
+        gold: {
+          DEFAULT: "oklch(0.82 0.15 62)",
+          dim: "oklch(0.75 0.13 62 / 0.85)",
+          glow: "oklch(0.82 0.15 62 / 0.25)",
         },
         sidebar: {
           DEFAULT: "oklch(var(--sidebar))",

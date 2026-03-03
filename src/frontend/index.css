@@ -1,3 +1,89 @@
+/* ── Self-hosted fonts ────────────────────────────────────────── */
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('/assets/fonts/PlayfairDisplay-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('/assets/fonts/PlayfairDisplay-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('/assets/fonts/PlayfairDisplay-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('/assets/fonts/PlayfairDisplay-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Outfit';
+  src: url('/assets/fonts/Outfit-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Outfit';
+  src: url('/assets/fonts/Outfit-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Outfit';
+  src: url('/assets/fonts/Outfit-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Outfit';
+  src: url('/assets/fonts/Outfit-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Outfit';
+  src: url('/assets/fonts/Outfit-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Outfit';
+  src: url('/assets/fonts/Outfit-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/assets/fonts/JetBrainsMono-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/assets/fonts/JetBrainsMono-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,76 +93,87 @@
     --radius: 0.625rem;
     --background: 0 0 0 / 0;
     --foreground: 1 0 0;
-    --card: 1 0 0 / 0.12;
+    --card: 1 0 0 / 0.10;
     --card-foreground: 1 0 0;
-    --popover: 0.15 0.02 250 / 0.95;
+    --popover: 0.10 0.02 250 / 0.97;
     --popover-foreground: 1 0 0;
-    --primary: 0.75 0.18 250;
-    --primary-foreground: 1 0 0;
+    --primary: 0.82 0.15 62;
+    --primary-foreground: 0.10 0.03 62;
     --secondary: 1 0 0 / 0.12;
     --secondary-foreground: 1 0 0;
-    --muted: 1 0 0 / 0.10;
-    --muted-foreground: 1 0 0 / 0.75;
+    --muted: 1 0 0 / 0.08;
+    --muted-foreground: 1 0 0 / 0.80;
     --accent: 1 0 0 / 0.12;
     --accent-foreground: 1 0 0;
     --destructive: 0.58 0.24 27;
     --destructive-foreground: 1 0 0;
-    --border: 1 0 0 / 0.20;
-    --input: 1 0 0 / 0.15;
-    --ring: 1 0 0 / 0.5;
+    --border: 1 0 0 / 0.18;
+    --input: 1 0 0 / 0.14;
+    --ring: 0.82 0.15 62 / 0.6;
     --chart-1: 0.646 0.222 41.116;
     --chart-2: 0.6 0.118 184.704;
     --chart-3: 0.398 0.07 227.392;
     --chart-4: 0.828 0.189 84.429;
     --chart-5: 0.769 0.188 70.08;
-    --sidebar: 1 0 0 / 0.06;
+    --sidebar: 1 0 0 / 0.04;
     --sidebar-foreground: 1 0 0;
-    --sidebar-primary: 0.75 0.18 250;
-    --sidebar-primary-foreground: 1 0 0;
+    --sidebar-primary: 0.82 0.15 62;
+    --sidebar-primary-foreground: 0.10 0.03 62;
     --sidebar-accent: 1 0 0 / 0.10;
     --sidebar-accent-foreground: 1 0 0;
-    --sidebar-border: 1 0 0 / 0.18;
-    --sidebar-ring: 1 0 0 / 0.5;
+    --sidebar-border: 1 0 0 / 0.15;
+    --sidebar-ring: 0.82 0.15 62 / 0.5;
+    
+    /* Typography scale */
+    --font-display: 'Playfair Display', 'Georgia', serif;
+    --font-body: 'Outfit', 'Segoe UI', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+    
+    /* Gold accent token */
+    --gold: oklch(0.82 0.15 62);
+    --gold-dim: oklch(0.75 0.13 62 / 0.85);
+    --gold-glow: oklch(0.82 0.15 62 / 0.25);
   }
 
   .dark {
     --background: 0 0 0 / 0;
     --foreground: 1 0 0;
-    --card: 1 0 0 / 0.10;
+    --card: 1 0 0 / 0.08;
     --card-foreground: 1 0 0;
-    --popover: 0.12 0.015 250 / 0.97;
+    --popover: 0.10 0.015 250 / 0.98;
     --popover-foreground: 1 0 0;
-    --primary: 0.65 0.18 250;
-    --primary-foreground: 1 0 0;
+    --primary: 0.82 0.15 62;
+    --primary-foreground: 0.10 0.03 62;
     --secondary: 1 0 0 / 0.10;
     --secondary-foreground: 1 0 0;
-    --muted: 1 0 0 / 0.08;
-    --muted-foreground: 1 0 0 / 0.70;
+    --muted: 1 0 0 / 0.07;
+    --muted-foreground: 1 0 0 / 0.75;
     --accent: 1 0 0 / 0.10;
     --accent-foreground: 1 0 0;
     --destructive: 0.7 0.19 22;
     --destructive-foreground: 1 0 0;
-    --border: 1 0 0 / 0.15;
-    --input: 1 0 0 / 0.12;
-    --ring: 1 0 0 / 0.45;
+    --border: 1 0 0 / 0.14;
+    --input: 1 0 0 / 0.11;
+    --ring: 0.82 0.15 62 / 0.5;
     --chart-1: 0.488 0.243 264.376;
     --chart-2: 0.696 0.17 162.48;
     --chart-3: 0.769 0.188 70.08;
     --chart-4: 0.627 0.265 303.9;
     --chart-5: 0.645 0.246 16.439;
-    --sidebar: 1 0 0 / 0.06;
+    --sidebar: 1 0 0 / 0.04;
     --sidebar-foreground: 1 0 0;
-    --sidebar-primary: 0.65 0.18 250;
-    --sidebar-primary-foreground: 1 0 0;
+    --sidebar-primary: 0.82 0.15 62;
+    --sidebar-primary-foreground: 0.10 0.03 62;
     --sidebar-accent: 1 0 0 / 0.10;
     --sidebar-accent-foreground: 1 0 0;
-    --sidebar-border: 1 0 0 / 0.15;
-    --sidebar-ring: 1 0 0 / 0.45;
+    --sidebar-border: 1 0 0 / 0.12;
+    --sidebar-ring: 0.82 0.15 62 / 0.45;
   }
 
   * {
     @apply border-border;
   }
+
   body {
     @apply text-foreground;
     background: transparent;
@@ -84,15 +181,122 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-family: 'Outfit', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    letter-spacing: 0.01em;
+  }
+
+  /* Typography hierarchy */
+  h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.02em;
+    font-weight: 700;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+    line-height: 1.2;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+
+  h2 {
+    font-size: 1.375rem;
+    line-height: 1.3;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+
+  h3 {
+    font-size: 1.125rem;
+    line-height: 1.35;
+    font-weight: 600;
+    letter-spacing: -0.02em;
   }
 }
 
 @layer utilities {
+  /* ── Financial Gradient ──────────────────────────────────────── */
   .financial-gradient {
-    background: linear-gradient(135deg, oklch(0.35 0.12 250), oklch(0.28 0.1 260));
+    background: linear-gradient(135deg, oklch(0.18 0.04 250 / 0.92), oklch(0.12 0.03 260 / 0.92));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
-  .dark .financial-gradient {
-    background: linear-gradient(135deg, oklch(0.22 0.04 250), oklch(0.18 0.03 260));
+
+  /* ── Text Shadows ────────────────────────────────────────────── */
+  .text-shadow-sm {
+    text-shadow: 0 1px 3px oklch(0 0 0 / 0.6), 0 0 20px oklch(0 0 0 / 0.3);
+  }
+  .text-shadow-md {
+    text-shadow: 0 2px 8px oklch(0 0 0 / 0.7), 0 0 30px oklch(0 0 0 / 0.4);
+  }
+  .text-shadow-gold {
+    text-shadow: 0 0 20px oklch(0.82 0.15 62 / 0.5), 0 1px 4px oklch(0 0 0 / 0.5);
+  }
+
+  /* ── Gold Accent ─────────────────────────────────────────────── */
+  .text-gold {
+    color: oklch(0.88 0.14 62);
+  }
+  .text-gold-dim {
+    color: oklch(0.82 0.13 62 / 0.90);
+  }
+  .border-gold {
+    border-color: oklch(0.82 0.15 62 / 0.40);
+  }
+  .bg-gold-subtle {
+    background-color: oklch(0.82 0.15 62 / 0.12);
+  }
+
+  /* ── Section Header Style ────────────────────────────────────── */
+  .section-header {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: white;
+    text-shadow: 0 1px 6px oklch(0 0 0 / 0.6), 0 0 24px oklch(0 0 0 / 0.2);
+    padding-left: 0.75rem;
+    border-left: 3px solid oklch(0.82 0.15 62);
+  }
+
+  .section-subheader {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: oklch(1 0 0 / 0.70);
+    text-transform: uppercase;
+    margin-top: 0.25rem;
+    padding-left: 0.75rem;
+  }
+
+  /* ── Display Font Utility ────────────────────────────────────── */
+  .font-display {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+  .font-body {
+    font-family: 'Outfit', 'Segoe UI', system-ui, sans-serif;
+  }
+  .font-mono-nums {
+    font-family: 'JetBrains Mono', 'Consolas', monospace;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ── Table Styles ────────────────────────────────────────────── */
+  .table-header-cell {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: oklch(1 0 0 / 0.75);
+    padding: 0.625rem 0.75rem;
+    white-space: nowrap;
+  }
+
+  .amount-value {
+    font-family: 'JetBrains Mono', 'Consolas', monospace;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
   }
 
   /* ── PIN Screen ──────────────────────────────────────────────── */
@@ -151,170 +355,148 @@
   }
 
   .pin-card {
-    background: oklch(0.10 0.02 250 / 0.75);
-    backdrop-filter: blur(20px);
-    border: 1px solid oklch(1 0 0 / 0.15);
+    background: oklch(0.10 0.04 230 / 0.88);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    border: 1px solid oklch(0.82 0.15 62 / 0.30);
+    box-shadow: 0 24px 64px oklch(0 0 0 / 0.55), 0 0 0 1px oklch(0.82 0.15 62 / 0.12) inset, 0 0 40px oklch(0.82 0.15 62 / 0.08);
   }
   .dark .pin-card,
   .pin-screen-bg.dark .pin-card {
-    background: oklch(0.10 0.02 250 / 0.85);
-    border: 1px solid oklch(1 0 0 / 0.10);
+    background: oklch(0.10 0.04 230 / 0.92);
+    border: 1px solid oklch(0.82 0.15 62 / 0.25);
   }
 
   .pin-icon-ring {
-    background: linear-gradient(135deg, oklch(0.35 0.12 250 / 0.12), oklch(0.50 0.16 220 / 0.10));
-    border: 1.5px solid oklch(0.35 0.12 250 / 0.2);
-  }
-  .dark .pin-icon-ring,
-  .pin-screen-bg.dark .pin-icon-ring {
-    background: linear-gradient(135deg, oklch(0.65 0.15 250 / 0.15), oklch(0.55 0.12 220 / 0.12));
-    border: 1.5px solid oklch(0.65 0.15 250 / 0.25);
+    background: linear-gradient(135deg, oklch(0.82 0.15 62 / 0.20), oklch(0.75 0.12 70 / 0.14));
+    border: 1.5px solid oklch(0.82 0.15 62 / 0.40);
+    box-shadow: 0 0 16px oklch(0.82 0.15 62 / 0.20);
   }
 
   .pin-divider {
-    background: oklch(1 0 0 / 0.20);
-  }
-  .dark .pin-divider,
-  .pin-screen-bg.dark .pin-divider {
-    background: oklch(1 0 0 / 0.15);
+    background: linear-gradient(to right, transparent, oklch(1 0 0 / 0.18), transparent);
   }
 
   .pin-text-primary {
     color: oklch(1 0 0);
+    text-shadow: 0 1px 3px oklch(0 0 0 / 0.4);
   }
-  .dark .pin-text-primary,
-  .pin-screen-bg.dark .pin-text-primary {
-    color: oklch(1 0 0);
-  }
-
   .pin-text-muted {
-    color: oklch(1 0 0 / 0.75);
+    color: oklch(1 0 0 / 0.72);
   }
-  .dark .pin-text-muted,
-  .pin-screen-bg.dark .pin-text-muted {
-    color: oklch(1 0 0 / 0.70);
-  }
-
   .pin-text-accent {
-    color: oklch(0.85 0.12 250);
+    color: oklch(0.88 0.14 62);
   }
-  .dark .pin-text-accent,
-  .pin-screen-bg.dark .pin-text-accent {
-    color: oklch(0.85 0.15 250);
-  }
-
   .pin-icon-accent {
-    color: oklch(0.85 0.12 250);
-  }
-  .dark .pin-icon-accent,
-  .pin-screen-bg.dark .pin-icon-accent {
-    color: oklch(0.85 0.15 250);
+    color: oklch(0.88 0.14 62);
   }
 
   .pin-digit-empty {
-    border-color: oklch(1 0 0 / 0.40);
+    border-color: oklch(1 0 0 / 0.35);
     color: oklch(1 0 0);
+    background: oklch(1 0 0 / 0.05);
   }
   .dark .pin-digit-empty,
   .pin-screen-bg.dark .pin-digit-empty {
-    border-color: oklch(1 0 0 / 0.30);
+    border-color: oklch(1 0 0 / 0.28);
     color: oklch(1 0 0);
   }
 
   .pin-digit-filled {
-    border-color: oklch(0.35 0.12 250);
-    color: oklch(0.35 0.12 250);
-    background: oklch(0.35 0.12 250 / 0.06);
-  }
-  .dark .pin-digit-filled,
-  .pin-screen-bg.dark .pin-digit-filled {
-    border-color: oklch(0.65 0.15 250);
-    color: oklch(0.65 0.15 250);
-    background: oklch(0.65 0.15 250 / 0.10);
+    border-color: oklch(0.82 0.15 62 / 0.80);
+    color: oklch(0.88 0.14 62);
+    background: oklch(0.82 0.15 62 / 0.10);
+    box-shadow: 0 0 12px oklch(0.82 0.15 62 / 0.20);
   }
 
   .pin-digit-box:focus {
-    border-color: oklch(0.45 0.15 250);
-    box-shadow: 0 0 0 3px oklch(0.45 0.15 250 / 0.15);
-    background: oklch(0.45 0.15 250 / 0.04);
-  }
-  .dark .pin-digit-box:focus,
-  .pin-screen-bg.dark .pin-digit-box:focus {
-    border-color: oklch(0.65 0.15 250);
-    box-shadow: 0 0 0 3px oklch(0.65 0.15 250 / 0.18);
-    background: oklch(0.65 0.15 250 / 0.08);
+    border-color: oklch(0.82 0.15 62);
+    box-shadow: 0 0 0 3px oklch(0.82 0.15 62 / 0.22), 0 0 12px oklch(0.82 0.15 62 / 0.15);
+    background: oklch(0.82 0.15 62 / 0.06);
   }
 
   .pin-submit-btn {
-    background: linear-gradient(135deg, oklch(0.35 0.12 250), oklch(0.42 0.16 245));
-    color: oklch(0.98 0 0);
+    background: linear-gradient(135deg, oklch(0.78 0.16 62), oklch(0.72 0.18 55));
+    color: oklch(0.10 0.03 62);
     border: none;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    box-shadow: 0 4px 16px oklch(0.82 0.15 62 / 0.30);
   }
   .pin-submit-btn:hover:not(:disabled) {
-    background: linear-gradient(135deg, oklch(0.40 0.14 250), oklch(0.47 0.18 245));
+    background: linear-gradient(135deg, oklch(0.82 0.17 62), oklch(0.76 0.20 55));
+    box-shadow: 0 6px 20px oklch(0.82 0.15 62 / 0.40);
   }
   .pin-submit-btn:disabled {
-    opacity: 0.45;
+    opacity: 0.40;
     cursor: not-allowed;
-  }
-  .dark .pin-submit-btn,
-  .pin-screen-bg.dark .pin-submit-btn {
-    background: linear-gradient(135deg, oklch(0.55 0.18 250), oklch(0.60 0.20 245));
-    color: oklch(0.10 0.015 250);
-  }
-  .dark .pin-submit-btn:hover:not(:disabled),
-  .pin-screen-bg.dark .pin-submit-btn:hover:not(:disabled) {
-    background: linear-gradient(135deg, oklch(0.60 0.20 250), oklch(0.65 0.22 245));
   }
 }
 
-/* ── App Inner Pages — Gradient Background Bleed-Through ──────── */
+/* ── App Inner Pages — Glass Surfaces ─────────────────────────── */
 .sidebar-glass {
-  background: oklch(0 0 0 / 0.35);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: oklch(0.12 0.04 140 / 0.78);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-right: 1px solid oklch(0.82 0.15 62 / 0.15);
+  box-shadow: 2px 0 24px oklch(0 0 0 / 0.30);
 }
 .dark .sidebar-glass {
-  background: oklch(0 0 0 / 0.50);
+  background: oklch(0.10 0.04 140 / 0.85);
+  border-right: 1px solid oklch(0.82 0.15 62 / 0.12);
 }
 
 .main-glass {
-  background: oklch(0 0 0 / 0.15);
+  background: oklch(0.08 0.03 80 / 0.22);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
 }
 .dark .main-glass {
-  background: oklch(0 0 0 / 0.30);
+  background: oklch(0.06 0.03 80 / 0.30);
 }
 
-/* ── Force white text everywhere on background image ──────────── */
-/* Cards and popovers get a dark semi-transparent base for legibility */
-.bg-card, [class*="bg-card"] {
-  color: white !important;
-}
-
-/* Ensure all standard text nodes inherit white */
-p, h1, h2, h3, h4, h5, h6, span, label, td, th, div, li, a:not([class*="text-primary"]) {
-  color: inherit;
-}
-
-/* Override any remaining light-themed text */
-.text-gray-900, .text-gray-800, .text-gray-700, .text-slate-900, .text-slate-800, .text-slate-700,
-.text-zinc-900, .text-zinc-800, .text-zinc-700, .text-neutral-900, .text-neutral-800 {
-  color: white !important;
-}
-
-/* Selects and inputs should have white text on dark semi-transparent background */
-select, input, textarea {
-  color: white !important;
-  background-color: oklch(1 0 0 / 0.12) !important;
-}
-select option {
-  background-color: oklch(0.15 0.02 250);
+/* ── Force white text on background image ─────────────────────── */
+html, body, #root {
   color: white;
 }
 
-/* ── Invoice / PDF Print ─────────────────────────────────────── */
+.text-gray-900, .text-gray-800, .text-gray-700, .text-gray-600, .text-gray-500,
+.text-slate-900, .text-slate-800, .text-slate-700, .text-slate-600,
+.text-zinc-900, .text-zinc-800, .text-zinc-700,
+.text-neutral-900, .text-neutral-800, .text-neutral-700,
+.text-stone-900, .text-stone-800, .text-stone-700 {
+  color: white !important;
+}
+
+/* Selects and inputs */
+select, input:not([type="checkbox"]):not([type="radio"]):not([type="range"]), textarea {
+  color: white !important;
+  background-color: oklch(1 0 0 / 0.09) !important;
+}
+select option {
+  background-color: oklch(0.14 0.02 250);
+  color: white;
+}
+
+/* ── Card Enhancement ─────────────────────────────────────────── */
+.card-glass {
+  background: oklch(0.12 0.04 140 / 0.72) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid oklch(0.82 0.15 62 / 0.15) !important;
+  box-shadow: 0 4px 24px oklch(0 0 0 / 0.30), 0 1px 0 oklch(1 0 0 / 0.06) inset;
+}
+
+/* Shadcn Card overrides for glass effect on background image */
+[class*="rounded-"] .card,
+.card {
+  background: oklch(0.10 0.04 130 / 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-color: oklch(0.82 0.15 62 / 0.15);
+}
+
+/* ── Invoice / PDF Print ──────────────────────────────────────── */
 #invoice-print-area {
   display: block;
 }
@@ -323,7 +505,6 @@ select option {
   body > * {
     display: none !important;
   }
-  /* Show only the invoice inside the dialog when printing */
   #invoice-print-area {
     display: block !important;
     position: fixed !important;

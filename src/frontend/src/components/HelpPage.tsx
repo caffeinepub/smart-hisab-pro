@@ -116,32 +116,28 @@ export default function HelpPage() {
               {[
                 {
                   type: "Income",
-                  badge:
-                    "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300",
+                  badge: "bg-emerald-900/50 text-emerald-300",
                   bn: "আয়",
                   en: "Money received",
                   when: "যখন কাস্টমার টাকা দেয় / When customer pays you",
                 },
                 {
                   type: "Expense",
-                  badge:
-                    "bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-300",
+                  badge: "bg-red-900/50 text-red-300",
                   bn: "ব্যয়",
                   en: "Money spent",
                   when: "যখন কোনো খরচ হয় / When you spend money",
                 },
                 {
                   type: "Due",
-                  badge:
-                    "bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300",
+                  badge: "bg-amber-900/50 text-amber-300",
                   bn: "বাকি",
                   en: "Amount owed",
                   when: "যখন কাস্টমার বাকিতে নেয় / When customer owes you",
                 },
                 {
                   type: "Paid",
-                  badge:
-                    "bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-300",
+                  badge: "bg-blue-900/50 text-blue-300",
                   bn: "পরিশোধ",
                   en: "Debt cleared",
                   when: "যখন বাকির টাকা পরিশোধ হয় / When due amount is paid",
@@ -400,22 +396,22 @@ export default function HelpPage() {
       icon: <Download className="h-5 w-5" />,
       content: (
         <div className="space-y-3">
-          <div className="p-3 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-200/60 dark:border-blue-900/50">
-            <p className="text-sm text-blue-800 dark:text-blue-300 font-medium mb-1">
+          <div className="p-3 rounded-lg bg-blue-600/30 border border-blue-400/40">
+            <p className="text-sm text-white font-medium mb-1">
               📦 ডেটা কোথায় সংরক্ষিত হয়? / Where is data stored?
             </p>
-            <p className="text-xs text-blue-700 dark:text-blue-400">
+            <p className="text-xs text-white/80">
               আপনার সমস্ত ডেটা ব্রাউজারের localStorage-এ সংরক্ষিত হয়। এর মানে ডেটা শুধু এই
               ডিভাইস ও ব্রাউজারে থাকে। ব্রাউজার ক্লিয়ার করলে ডেটা হারিয়ে যাবে। / All data is
               stored in browser localStorage. It stays on this device and
               browser only. Clearing browser data will remove it.
             </p>
           </div>
-          <div className="p-3 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-200/60 dark:border-amber-900/50">
-            <p className="text-sm text-amber-800 dark:text-amber-300 font-medium mb-1">
+          <div className="p-3 rounded-lg bg-amber-500/30 border border-amber-400/40">
+            <p className="text-sm text-white font-medium mb-1">
               ⚠️ ব্যাকআপ নিন / Take Backup
             </p>
-            <p className="text-xs text-amber-700 dark:text-amber-400">
+            <p className="text-xs text-white/80">
               নিয়মিত CSV রপ্তানি করে ব্যাকআপ নিন। লেনদেন ট্যাবে 'CSV রপ্তানি' বাটন ব্যবহার
               করুন। এই ফাইলটি Excel বা Google Sheets-এ খুলতে পারবেন। / Regularly
               export CSV as backup. Use 'Export CSV' in Transactions tab. Open

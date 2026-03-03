@@ -101,21 +101,18 @@ export default function DashboardPage({
     .slice(0, 10);
 
   const typeBadge: Record<TransactionType, string> = {
-    Income:
-      "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300",
-    Expense: "bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-300",
-    Due: "bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300",
-    Paid: "bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-300",
+    Income: "bg-emerald-900/50 text-emerald-300",
+    Expense: "bg-red-900/50 text-red-300",
+    Due: "bg-amber-900/50 text-amber-300",
+    Paid: "bg-blue-900/50 text-blue-300",
   };
 
   return (
     <section aria-label="ড্যাশবোর্ড">
-      <div className="mb-5">
-        <h2 className="font-bold text-foreground text-xl leading-tight mb-0.5">
-          ড্যাশবোর্ড
-        </h2>
-        <p className="text-xs text-muted-foreground">
-          Dashboard — Overview & Analytics
+      <div className="mb-6">
+        <h2 className="section-header">ড্যাশবোর্ড</h2>
+        <p className="section-subheader">
+          Dashboard — Overview &amp; Analytics
         </p>
       </div>
 
@@ -159,8 +156,26 @@ export default function DashboardPage({
           <div className="flex items-center justify-center gap-1 mb-1">
             <BarChart3 className="h-4 w-4 text-white" />
           </div>
-          <p className="text-xs text-white/80 font-medium">লাভ / Profit</p>
-          <p className="font-bold text-lg leading-tight tabular-nums text-white">
+          <p
+            style={{
+              fontSize: "0.7rem",
+              fontWeight: 700,
+              letterSpacing: "0.05em",
+              textTransform: "uppercase",
+              color: "rgba(255,255,255,0.85)",
+            }}
+          >
+            লাভ / Profit
+          </p>
+          <p
+            className="text-white leading-tight tabular-nums"
+            style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: "1.1rem",
+              fontWeight: 700,
+              letterSpacing: "-0.01em",
+            }}
+          >
             {fmtAmt(profit)}
           </p>
         </div>
@@ -168,8 +183,26 @@ export default function DashboardPage({
           <div className="flex items-center justify-center gap-1 mb-1">
             <Users className="h-4 w-4 text-white" />
           </div>
-          <p className="text-xs text-white/80 font-medium">কাস্টমার / Customers</p>
-          <p className="font-bold text-lg leading-tight tabular-nums text-white">
+          <p
+            style={{
+              fontSize: "0.7rem",
+              fontWeight: 700,
+              letterSpacing: "0.05em",
+              textTransform: "uppercase",
+              color: "rgba(255,255,255,0.85)",
+            }}
+          >
+            কাস্টমার / Customers
+          </p>
+          <p
+            className="text-white leading-tight tabular-nums"
+            style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: "1.1rem",
+              fontWeight: 700,
+              letterSpacing: "-0.01em",
+            }}
+          >
             {customers.length}
           </p>
         </div>
@@ -180,8 +213,19 @@ export default function DashboardPage({
         {/* Bar Chart */}
         <Card className="shadow-sm">
           <CardHeader className="pb-3">
-            <CardTitle className="flex items-center gap-2 text-base">
-              <BarChart3 className="h-4 w-4 text-primary" />
+            <CardTitle
+              className="flex items-center gap-2"
+              style={{
+                fontFamily: "'Playfair Display', Georgia, serif",
+                fontSize: "0.95rem",
+                fontWeight: 700,
+                letterSpacing: "0",
+              }}
+            >
+              <BarChart3
+                className="h-4 w-4"
+                style={{ color: "oklch(0.88 0.14 62)" }}
+              />
               সামগ্রিক বিশ্লেষণ / Overview
             </CardTitle>
           </CardHeader>
@@ -238,8 +282,19 @@ export default function DashboardPage({
         {/* Pie Chart */}
         <Card className="shadow-sm">
           <CardHeader className="pb-3">
-            <CardTitle className="flex items-center gap-2 text-base">
-              <BarChart3 className="h-4 w-4 text-primary" />
+            <CardTitle
+              className="flex items-center gap-2"
+              style={{
+                fontFamily: "'Playfair Display', Georgia, serif",
+                fontSize: "0.95rem",
+                fontWeight: 700,
+                letterSpacing: "0",
+              }}
+            >
+              <BarChart3
+                className="h-4 w-4"
+                style={{ color: "oklch(0.88 0.14 62)" }}
+              />
               কাস্টমার আয় বিতরণ / Income Distribution
             </CardTitle>
           </CardHeader>
@@ -301,8 +356,19 @@ export default function DashboardPage({
       {/* Recent Transactions */}
       <Card className="shadow-sm">
         <CardHeader className="pb-3">
-          <CardTitle className="flex items-center gap-2 text-base">
-            <Clock className="h-4 w-4 text-primary" />
+          <CardTitle
+            className="flex items-center gap-2"
+            style={{
+              fontFamily: "'Playfair Display', Georgia, serif",
+              fontSize: "0.95rem",
+              fontWeight: 700,
+              letterSpacing: "0",
+            }}
+          >
+            <Clock
+              className="h-4 w-4"
+              style={{ color: "oklch(0.88 0.14 62)" }}
+            />
             সাম্প্রতিক লেনদেন / Recent Transactions
           </CardTitle>
         </CardHeader>
@@ -315,17 +381,18 @@ export default function DashboardPage({
             <div className="overflow-x-auto rounded-md border border-border">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="bg-muted/60 border-b border-border">
-                    <th className="px-3 py-2 text-left font-semibold text-muted-foreground whitespace-nowrap">
+                  <tr
+                    className="border-b border-border"
+                    style={{ background: "oklch(0 0 0 / 0.30)" }}
+                  >
+                    <th className="table-header-cell text-left whitespace-nowrap">
                       তারিখ / Date
                     </th>
-                    <th className="px-3 py-2 text-left font-semibold text-muted-foreground">
-                      ধরন / Type
-                    </th>
-                    <th className="px-3 py-2 text-left font-semibold text-muted-foreground">
+                    <th className="table-header-cell text-left">ধরন / Type</th>
+                    <th className="table-header-cell text-left">
                       কাস্টমার / Customer
                     </th>
-                    <th className="px-3 py-2 text-right font-semibold text-muted-foreground">
+                    <th className="table-header-cell text-right">
                       পরিমাণ / Amount
                     </th>
                   </tr>
@@ -339,18 +406,35 @@ export default function DashboardPage({
                         key={i}
                         className="border-b border-border/60 hover:bg-muted/40 transition-colors"
                       >
-                        <td className="px-3 py-2 whitespace-nowrap text-muted-foreground font-mono text-xs">
+                        <td
+                          className="px-3 py-2.5 whitespace-nowrap"
+                          style={{
+                            fontSize: "0.75rem",
+                            opacity: 0.8,
+                            fontFamily: "'JetBrains Mono', monospace",
+                            letterSpacing: "0.02em",
+                          }}
+                        >
                           {t.date}
                         </td>
-                        <td className="px-3 py-2">
+                        <td className="px-3 py-2.5">
                           <span
-                            className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold ${typeBadge[t.type]}`}
+                            className={`inline-flex items-center px-2 py-0.5 rounded-full font-bold ${typeBadge[t.type]}`}
+                            style={{
+                              fontSize: "0.7rem",
+                              letterSpacing: "0.04em",
+                            }}
                           >
                             {t.type}
                           </span>
                         </td>
-                        <td className="px-3 py-2 font-medium">{cust.name}</td>
-                        <td className="px-3 py-2 text-right font-semibold tabular-nums">
+                        <td
+                          className="px-3 py-2.5 font-semibold"
+                          style={{ fontSize: "0.875rem" }}
+                        >
+                          {cust.name}
+                        </td>
+                        <td className="px-3 py-2.5 text-right amount-value">
                           {t.amount.toLocaleString()} ৳
                         </td>
                       </tr>
@@ -386,9 +470,25 @@ function SummaryCard({
       className={`rounded-lg border p-3 text-center shadow-xs transition-colors ${bgClass}`}
     >
       <div className="flex items-center justify-center gap-1 mb-1">{icon}</div>
-      <p className="text-xs text-white/80 font-medium">{label}</p>
       <p
-        className={`font-bold text-lg leading-tight tabular-nums ${colorClass}`}
+        style={{
+          fontSize: "0.7rem",
+          fontWeight: 700,
+          letterSpacing: "0.05em",
+          textTransform: "uppercase",
+          color: "rgba(255,255,255,0.85)",
+        }}
+      >
+        {label}
+      </p>
+      <p
+        className={`leading-tight tabular-nums ${colorClass}`}
+        style={{
+          fontFamily: "'JetBrains Mono', monospace",
+          fontSize: "1.1rem",
+          fontWeight: 700,
+          letterSpacing: "-0.01em",
+        }}
       >
         {value.toLocaleString()}
       </p>
